@@ -6,8 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets\
-                                        opengl
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Assignment2
 TEMPLATE = app
@@ -19,7 +18,12 @@ SOURCES +=	main.cpp\
 		    itemfactory.cpp \
     block.cpp \
     ballconfigitem.cpp \
-    blockconfigitem.cpp
+    blockconfigitem.cpp \
+    paddleconfigitem.cpp \
+    paddle.cpp \
+    AbstractResponsibility.cpp \
+    score.cpp \
+    chainofresponsibility.cpp
 
 HEADERS  += dialog.h\
             config.h \
@@ -30,9 +34,16 @@ HEADERS  += dialog.h\
     block.h \
     configitem.h \
     ballconfigitem.h \
-    blockconfigitem.h
+    blockconfigitem.h \
+    paddleconfigitem.h \
+    paddle.h \
+    AbstractResponsibility.h \
+    score.h \
+    chainofresponsibility.h \
+    Events.h
 
-FORMS    += dialog.ui
+FORMS    += dialog.ui \
+    scoreboard.ui
 
 OTHER_FILES += config.config \
     README.md

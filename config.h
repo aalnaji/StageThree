@@ -11,8 +11,6 @@
 
 #include "defaults.h"
 #include "configitem.h"
-#include "ballconfigitem.h"
-#include "blockconfigitem.h"
 
 class Config
 {

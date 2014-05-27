@@ -22,10 +22,10 @@ public:
 
     void addParameter(std::string name, double value);
 
-    int getXCoordinate() const;
-    void setXCoordinate(int);
+	inline QRectF const getRect() const { return QRectF(0, 0, theRectangle.width(), theRectangle.height()); };
 
-    int getYCoordinate() const;
+	inline QPointF const getCoordinates() const { return theRectangle.topLeft(); };
+    void setXCoordinate(int);
     void setYCoordinate(int);
 
     int getWidth() const;
@@ -41,10 +41,7 @@ public:
     void setHue(float);
 
 private:
-    int xCoordinate;
-    int yCoordinate;
-    int width;
-    int height;
+	QRect theRectangle;
     int lives;
     QColor color;
 };

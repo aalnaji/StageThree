@@ -1,4 +1,6 @@
 #include "itemfactory.h"
+#include "paddleconfigitem.h"
+#include "paddle.h"
 
 QGraphicsItem* ItemFactory::make(ConfigItem *config)
 {
@@ -9,6 +11,8 @@ QGraphicsItem* ItemFactory::make(ConfigItem *config)
     case BLOCK:
         return new Block((BlockConfigItem *)config);
         break;
+	case PADDLE:
+		return new Paddle((PaddleConfigItem *)config);
     default:
         return NULL;
     }

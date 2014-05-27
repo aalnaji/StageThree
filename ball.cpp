@@ -1,16 +1,24 @@
-#include "ball.h"
+#include <iostream>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QPainter>
 
+#include "ball.h"
+#include "ballconfigitem.h"
+#include "paddle.h"
+#include "block.h"
+#include "config.h"
+#include "chainofresponsibility.h"
+#include "Events.h"
 
 Ball::Ball(BallConfigItem * config)
-    : radius(config->getRadius())
-    , velocity(config->getXVelocity(), config->getYVelocity())
+    : QGraphicsEllipseItem(0, 0,config->getRadius()* 2.0, config->getRadius()* 2.0)
+	, radius(config->getRadius())
+    , velocity(config->getVelocity())
     , color(config->getColor())
 {
-    setPos(mapToScene(config->getXCoordinate(), config->getYCoordinate()));
-}
-
-Ball::~Ball()
-{
+	setBrush(QBrush(color));
+	setPos(config->getCoordinates());
 }
 
 /*
@@ -24,32 +32,25 @@ void Ball::advance(int phase)
       return;
     }
 
-    float futureXPos = pos().x() + velocity.x();
-    float futureYPos= pos().y() + velocity.y();
-    float diameter = radius * 2;
+	QPointF futurePos(pos()+ velocity.toPointF());
 
     // Bounce off walls...
-    if (futureYPos <= 0) {
-        velocity.setY(velocity.y() * -1);
-        setPos(futureXPos, -1 * futureYPos);
-    } else if (futureXPos <= 0) {
-        velocity.setX(velocity.x() * -1);
-        setPos(-1 * futureXPos, futureYPos);
-    } else if (futureYPos >= scene()->height() - diameter) {
-        velocity.setY(velocity.y() * -1);
-        setPos(futureXPos, 2 * scene()->height() - futureYPos - 2 * diameter);
-    } else if (futureXPos >= scene()->width() - diameter) {
-        velocity.setX(velocity.x() * -1);
-        setPos(2 * scene()->width() - futureXPos - 2 * diameter, futureYPos);
-    } else {
-        setPos(futureXPos, futureYPos);
-    }
+    if (futurePos.y() <= 0)                                   velocity.setY(-velocity.y()); // left
+    else if (futurePos.x() <= 0)                              velocity.setX(-velocity.x()); // top
+    else if (futurePos.y() >= scene()->height()- 2.0* radius) velocity.setY(-velocity.y()); // right
+	else if (futurePos.x() >= scene()->width()- 2.0* radius){
+		velocity.setX(-velocity.x()); // bottom
+		BallLostEvent ballost;
+		ChainOfResponsibility::get().handleEvent(&ballost);
+	}
+
+	moveBy(velocity.x(), velocity.y());
 
     // Bounce of other items.
-    QList<QGraphicsItem *> collidingItems = this->collidingItems();
+    QList<QGraphicsItem *> collidingItems(this->collidingItems());
 
     // For each colliding item, check what type it is and resolve the collision.
-    for (QList<QGraphicsItem *>::iterator iter = collidingItems.begin(); iter != collidingItems.end(); ++iter) {
+    for (QList<QGraphicsItem *>::iterator iter(collidingItems.begin()); iter != collidingItems.end(); ++iter) {
         QGraphicsItem *item = *iter;
 
         if (Ball *b = dynamic_cast<Ball *>(item)) {
@@ -89,12 +90,13 @@ void Ball::advance(int phase)
             velocity += (ball2dot - ball1dot) * delta;
             b->velocity += (ball1dot - ball2dot) * delta;
 
-        } else if (Block *b = dynamic_cast<Block *>(item)) {
-            // We have a block...
+        } else if (dynamic_cast<QGraphicsRectItem *>(item)) {
+			// We have an item that is square in shape,i.e, either the paddle or a block
+			QRectF box(static_cast<QGraphicsRectItem *>(item)->rect());
 
-            float bX = b->pos().x();
-            float bY = b->pos().y();
-            QPointF centre = getCenter();
+            float bX(item->pos().x());
+            float bY(item->pos().y());
+            QPointF centre(getCenter());
 
             /*
              * 3 cases:
@@ -105,61 +107,67 @@ void Ball::advance(int phase)
 
             // If the ball centre is directly over an edge then it's an edge collision...
             if (centre.x() > bX
-                 && centre.x() < bX + b->getWidth()) {
+                 && centre.x() < bX + box.width()) {
                 // Only need to look at top and bottom collisions...
 
                 float ballTopEdge = pos().y();
-                float ballBottomEdge = pos().y() + radius * 2;
+                float ballBottomEdge = ballTopEdge + radius * 2.0;
 
                 float blockTopEdge = bY;
-                float blockBottomEdge = bY + b->getHeight();
-
+                float blockBottomEdge = bY + box.height();
                 if (blockTopEdge < ballTopEdge
                         && ballTopEdge < blockBottomEdge) {
                     // block being hit from the south...
-                    velocity.setY(velocity.y() * -1);
-                    setPos(pos().x(), pos().y() + (blockBottomEdge - ballTopEdge));
-                    b->decrementLives();
+                    velocity.setY(-velocity.y());
+                    //setPos(pos().x(), pos().y() + (blockBottomEdge - ballTopEdge));
+					moveBy(0.0 , blockBottomEdge - ballTopEdge);
+                    if(dynamic_cast<Block *>(item))
+						static_cast<Block *>(item)->decrementLives();
 
                 } else if (blockBottomEdge > ballBottomEdge
                            && ballBottomEdge > blockTopEdge) {
                     // block being hit from the north...
-                    velocity.setY(velocity.y() * -1);
-                    setPos(pos().x(), pos().y() - (ballBottomEdge - blockTopEdge));
-                    b->decrementLives();
+                    velocity.setY(-velocity.y());
+                    //setPos(pos().x(), pos().y() - (ballBottomEdge - blockTopEdge));
+					moveBy(0.0, blockTopEdge- ballBottomEdge);
+					if(dynamic_cast<Block *>(item))
+						static_cast<Block *>(item)->decrementLives();
                 }
 
             } else if (centre.y() > bY
-                 && centre.y() < bY + b->getHeight()) {
+                 && centre.y() < bY + box.height()) {
                 // Only need to look at left and right collisions...
                 float ballLeftEdge = pos().x();
                 float ballRightEdge = pos().x() + radius * 2;
                 float blockLeftEdge = bX;
-                float blockRightEdge = bX + b->getWidth();
+                float blockRightEdge = bX + box.width();
 
                 if (blockLeftEdge < ballLeftEdge
                         && ballLeftEdge < blockRightEdge) {
                     // block being hit from the east...
-                    velocity.setX(velocity.x() * -1);
+                    velocity.setX(-velocity.x());
                     setPos(pos().x() + (blockRightEdge - ballLeftEdge), pos().y());
-                    b->decrementLives();
+					if(dynamic_cast<Block *>(item))
+						static_cast<Block *>(item)->decrementLives();
 
                 } else if (blockRightEdge > ballRightEdge
                            && ballRightEdge > blockLeftEdge) {
                     // block being hit from the west...
-                    velocity.setX(velocity.x() * -1);
+                    velocity.setX(-velocity.x());
                     setPos(pos().x() - (ballRightEdge - blockLeftEdge), pos().y());
-                    b->decrementLives();
+					if(dynamic_cast<Block *>(item))
+						static_cast<Block *>(item)->decrementLives();
 
                 }
 
             } else {
+				std::cout<< "Edge collision"<< std::endl;
                 // It's a collision on the corners of the block...
                 // Get the distance to the 4 corner points and find the closet.
-                QPointF northEastCorner(b->pos());
-                QPointF northWestCorner(b->pos().x() + b->getWidth(), b->pos().y());
-                QPointF southEastCorner(b->pos().x(), b->pos().y() + b->getHeight());
-                QPointF southWestCorner(b->pos().x() + b->getWidth(), b->pos().y() + b->getHeight());
+                QPointF northEastCorner(box.topRight());
+                QPointF northWestCorner(box.topLeft());
+                QPointF southEastCorner(box.bottomRight());
+                QPointF southWestCorner(box.bottomLeft());
 
                 QVector2D northEastVect(centre - northEastCorner);
                 QVector2D northWestVect(centre - northWestCorner);
@@ -172,40 +180,22 @@ void Ball::advance(int phase)
                 float SW = southWestVect.length();
 
                 if (NE < NW && NE < SE && NE < SW) {
-                    resolveCornerCollision(northEastVect, b);
+                    if(resolveCornerCollision(northEastVect)&& dynamic_cast<Block *>(item))
+						static_cast<Block *>(item)->decrementLives();
                 } else if (NW < NE && NW < SE && NW < SW) {
-                    resolveCornerCollision(northWestVect, b);
+                    if(resolveCornerCollision(northWestVect)&& dynamic_cast<Block *>(item))
+							static_cast<Block *>(item)->decrementLives();
                 } else if (SE < NE && SE < NW && SE < SW) {
-                    resolveCornerCollision(southEastVect, b);
+                    if(resolveCornerCollision(southEastVect)&& dynamic_cast<Block *>(item))
+						static_cast<Block *>(item)->decrementLives();
                 } else { // SW must be min.
-                    resolveCornerCollision(southWestVect, b);
+                    if(resolveCornerCollision(southWestVect)&& dynamic_cast<Block *>(item))
+							static_cast<Block *>(item)->decrementLives();
                 }
 
             }
         }
-
-        std::cout.flush();
-
     }
-}
-
-void Ball::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
-{
-    QRectF rec = boundingRect();
-    QBrush brush(color);
-    painter->setBrush(brush);
-    painter->setPen(color);
-    painter->drawEllipse(rec);
-}
-
-QRectF Ball::boundingRect() const
-{
-    return QRectF(0, 0, radius*2, radius*2);
-}
-
-QPointF Ball::getPosition() const
-{
-    return pos();
 }
 
 QPointF Ball::getCenter() const
@@ -219,19 +209,19 @@ int Ball::getRadius() const
     return radius;
 }
 
-void Ball::setVelocity(QVector2D newVelocity)
+void Ball::setVelocity(QVector2D const &newVelocity)
 {
     velocity = newVelocity;
 }
 
 
-void Ball::resolveCornerCollision(QVector2D &distVect, Block *block)
+bool Ball::resolveCornerCollision(QVector2D &distVect)
 {
     float length = distVect.length();
 
     if (length > radius) {
         // Not actually colliding yet...
-        return;
+        return false;
     }
 
     // minimum translation distance (mtd) to push balls apart after intersecting
@@ -248,10 +238,11 @@ void Ball::resolveCornerCollision(QVector2D &distVect, Block *block)
 
     // If balls are moving away from each other already.
     if (ballDot > 0.0) {
-        return;
+        return false;
     }
 
-    // Apply the new velocities to their balls.
+    // Apply the new velocities to this ball
     velocity += (-2 * ballDot) * distVect;
-    block->decrementLives();
+
+	return true;
 }

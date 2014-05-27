@@ -1,23 +1,22 @@
+#include <iostream>
+
 #include "ballconfigitem.h"
+#include "defaults.h"
 
 BallConfigItem::BallConfigItem()
     : ConfigItem()
-    , xCoordinate(Defaults::BALL_X_COORDINATE)
-    , yCoordinate(Defaults::BALL_Y_COORDINATE)
+    , coordinate(Defaults::BALL_X_COORDINATE, Defaults::BALL_Y_COORDINATE)
     , radius(Defaults::BALL_RADIUS)
-    , xVelocity(Defaults::BALL_X_VELOCITY)
-    , yVelocity(Defaults::BALL_Y_VELOCITY)
+    , velocity(Defaults::BALL_X_VELOCITY, Defaults::BALL_Y_VELOCITY)
     , color(Defaults::BALL_COLOR) {}
-
-BallConfigItem::~BallConfigItem() {}
 
 bool BallConfigItem::validate(int height, int width) const
 {
     // Check if in the bounds of the scene.
     QRect wind(0, 0, width, height);
-    QRect bal(xCoordinate, yCoordinate, radius * 2, radius * 2);
+    QRect bal(coordinate.x(), coordinate.y(), radius * 2, radius * 2);
 
-    // Checks if the block is entirely within the window.
+    // Checks if the ball is entirely within the window.
     return wind.contains(bal, true);
 }
 
@@ -51,29 +50,14 @@ void BallConfigItem::addParameter(std::string name, double value)
     }
 }
 
-int BallConfigItem::getXCoordinate() const
-{
-    return xCoordinate;
-}
-
 void BallConfigItem::setXCoordinate(int xCoordinate)
 {
-    this->xCoordinate = xCoordinate;
-}
-
-int BallConfigItem::getYCoordinate() const
-{
-    return yCoordinate;
+    this->coordinate.setX(xCoordinate);
 }
 
 void BallConfigItem::setYCoordinate(int yCoordinate)
 {
-    this->yCoordinate = yCoordinate;
-}
-
-int BallConfigItem::getRadius() const
-{
-    return radius;
+    this->coordinate.setY(yCoordinate);
 }
 
 void BallConfigItem::setRadius(int radius)
@@ -81,24 +65,14 @@ void BallConfigItem::setRadius(int radius)
     this->radius = radius;
 }
 
-float BallConfigItem::getXVelocity() const
-{
-    return xVelocity;
-}
-
 void BallConfigItem::setXVelocity(float xVelocity)
 {
-    this->xVelocity = xVelocity;
-}
-
-float BallConfigItem::getYVelocity() const
-{
-    return yVelocity;
+    this->velocity.setX(xVelocity);
 }
 
 void BallConfigItem::setYVelocity(float yVelocity)
 {
-    this->yVelocity = yVelocity;
+    this->velocity.setY(yVelocity);
 }
 
 QColor BallConfigItem::getColor() const

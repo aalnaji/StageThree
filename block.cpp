@@ -1,8 +1,11 @@
 #include "block.h"
+#include "blockconfigitem.h"
+#include <QPainter>
+#include <QGraphicsScene>
+#include "score.h"
 
 Block::Block(BlockConfigItem * config)
-    : width(config->getWidth())
-    , height(config->getHeight())
+    : QGraphicsRectItem(config->getRect())
     , currentLives(config->getLives())
     , initialLives(config->getLives())
     , color(config->getColor())
@@ -10,12 +13,8 @@ Block::Block(BlockConfigItem * config)
     , satVal(color.saturationF())
     , ligVal(color.lightnessF())
 {
-    setPos(mapToScene(config->getXCoordinate(),
-                      config->getYCoordinate()));
-}
-
-Block::~Block()
-{
+	setPos(config->getCoordinates());
+	setBrush(QBrush(color));
 }
 
 /*
@@ -26,13 +25,13 @@ Block::~Block()
 void Block::advance(int phase)
 {
     if (!phase) {
-        update();
+        return;
     }
 
     // Check if there are any overlapping blocks...
-    QList<QGraphicsItem *> ci = collidingItems();
+/*    QList<QGraphicsItem *> ci(collidingItems());
 
-    for (QList<QGraphicsItem *>::iterator iter = ci.begin(); iter != ci.end(); ++iter) {
+    for (QList<QGraphicsItem *>::iterator iter(ci.begin()); iter != ci.end(); ++iter) {
         QGraphicsItem *item = *iter;
         if (Block *b = dynamic_cast<Block *>(item)) {
             if (b->zValue() > zValue()) {
@@ -40,12 +39,15 @@ void Block::advance(int phase)
                 delete b;
             }
         }
-    }
+    }*/
 
     // Delete if all lives have been lost.
     if (currentLives <= 0) {
         scene()->removeItem(this);
+		/* Killing the block adds 10 points. */
+		Score::get().add(10);
         delete this;
+		return;
     }
 
     // Cycle through all the hue colours over the course of all the lives.
@@ -54,34 +56,12 @@ void Block::advance(int phase)
         newHueVal += 1;
     }
     color.setHslF(newHueVal, satVal, ligVal);
-}
-
-void Block::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
-{
-    QRectF rec = boundingRect();
-    QBrush brush(color);
-    painter->setBrush(brush);
-    painter->drawRect(rec);
-}
-
-QRectF Block::boundingRect() const
-{
-    return QRectF(0, 0, width, height);
+	setBrush(QBrush(color));
 }
 
 QPointF Block::getPosition() const
 {
     return pos();
-}
-
-int Block::getWidth() const
-{
-    return width;
-}
-
-int Block::getHeight() const
-{
-    return height;
 }
 
 int Block::getLives() const
@@ -92,4 +72,6 @@ int Block::getLives() const
 void Block::decrementLives()
 {
     currentLives--;
+	/* A single hit adds one point. */
+	Score::get().add(1);
 }

@@ -1,12 +1,18 @@
 #include "dialog.h"
 #include "ui_dialog.h"
+#include "blockconfigitem.h"
+#include "ballconfigitem.h"
+#include "paddleconfigitem.h"
+#include "itemfactory.h"
+#include "score.h"
+#include "chainofresponsibility.h"
+#include "Events.h"
 
 Dialog::Dialog(Config *config,
                QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Dialog)
     , config(config)
-    , zCount(0)
 {
     ui->setupUi(this);
     this->resize(config->getWidth(), config->getHeight());
@@ -20,11 +26,23 @@ Dialog::Dialog(Config *config,
     view->setScene(scene);
     view->setRenderHint(QPainter::Antialiasing);
 
+	AbstractResponsibility *respChainItem;
     for (size_t i = 0; i < config->size(); i++) {
-        QGraphicsItem *madeItem = ItemFactory::make((*config)[i]);
-        madeItem->setZValue(zCount++);
+        QGraphicsItem *madeItem(ItemFactory::make((*config)[i]));
         scene->addItem(madeItem);
+		if((respChainItem= dynamic_cast<AbstractResponsibility *>(madeItem))) {
+			/* When no keypress handlers are on the chain, then a null is inserted. */
+			ChainOfResponsibility::get().add(respChainItem);
+		}
     }
+	/* Add this object to the chain for key handling, too. */
+	ChainOfResponsibility::get().add(this);
+
+	/* Reseting the score, will render the string, which is then used for positioning. */
+	Score::get().reset();
+	/* Tell the score item where to display itself. Add 5 points distance to the border. */
+	Score::get().setPos(scene->width()- Score::get().boundingRect().width()- 5.0, 5.0);
+	scene->addItem(&Score::get());
 }
 
 void Dialog::nextFrame()
@@ -45,7 +63,7 @@ void Dialog::mousePressEvent(QMouseEvent *event)
         newConfig->setYCoordinate(event->y() - (newConfig->getHeight() / 2.0));
 
         QGraphicsItem *block = ItemFactory::make(newConfig);
-        block->setZValue(zCount++);
+  //      block->setZValue(zCount++);
         scene->addItem(block);
     } else if (event->button() == Qt::RightButton) {
         BallConfigItem *newConfig = new BallConfigItem();
@@ -54,9 +72,25 @@ void Dialog::mousePressEvent(QMouseEvent *event)
         newConfig->setYCoordinate(event->y() - (newConfig->getRadius()));
 
         QGraphicsItem *ball = ItemFactory::make(newConfig);
-        ball->setZValue(zCount++);
+    //    ball->setZValue(zCount++);
         scene->addItem(ball);
     }
+}
+
+/** Start the chain of responsibility for key presses by overloading the
+ * method. */
+void Dialog::keyPressEvent(QKeyEvent *event) {
+	KeyEvent ke;
+	ke.keycode= event->key();
+	ChainOfResponsibility::get().handleEvent(&ke);
+}
+
+void Dialog::handleKeyPress(Event *event) {
+	KeyEvent *ke;
+	if(((ke= dynamic_cast<KeyEvent *>(event)))&& ke->keycode== Qt::Key_Q)
+		this->close();
+	else
+		AbstractResponsibility::handleEvent(event);
 }
 
 Dialog::~Dialog()

@@ -2,10 +2,8 @@
 
 BlockConfigItem::BlockConfigItem()
     : ConfigItem()
-    , xCoordinate(Defaults::BLOCK_X_COORDINATE)
-    , yCoordinate(Defaults::BLOCK_Y_COORDINATE)
-    , width(Defaults::BLOCK_WIDTH)
-    , height(Defaults::BLOCK_HEIGHT)
+	, theRectangle(Defaults::BLOCK_X_COORDINATE, Defaults::BLOCK_Y_COORDINATE,
+			Defaults::BLOCK_WIDTH, Defaults::BLOCK_HEIGHT)
     , lives(Defaults::BLOCK_LIVES)
     , color(Defaults::BLOCK_COLOR) {}
 
@@ -15,10 +13,9 @@ bool BlockConfigItem::validate(int width, int height) const
 {
     // Check if in the bounds of the scene.
     QRect wind(0,0,width, height);
-    QRect blok(xCoordinate, yCoordinate, this->width, this->height);
 
     // Checks if the block is entirely within the window.
-    return wind.contains(blok, true);
+    return wind.contains(theRectangle, true);
 }
 
 Item BlockConfigItem::getItemType() const
@@ -51,44 +48,34 @@ void BlockConfigItem::addParameter(std::string name, double value)
     }
 }
 
-int BlockConfigItem::getXCoordinate() const
-{
-    return xCoordinate;
-}
-
 void BlockConfigItem::setXCoordinate(int xCoordinate)
 {
-    this->xCoordinate = xCoordinate;
-}
-
-int BlockConfigItem::getYCoordinate() const
-{
-    return yCoordinate;
+    theRectangle.setX(xCoordinate);
 }
 
 void BlockConfigItem::setYCoordinate(int yCoordinate)
 {
-    this->yCoordinate = yCoordinate;
+    theRectangle.setY(yCoordinate);
 }
 
 int BlockConfigItem::getWidth() const
 {
-    return width;
+    return theRectangle.width();
 }
 
 void BlockConfigItem::setWidth(int width)
 {
-    this->width = width;
+    theRectangle.setWidth(width);
 }
 
 int BlockConfigItem::getHeight() const
 {
-    return height;
+    return theRectangle.height();
 }
 
 void BlockConfigItem::setHeight(int height)
 {
-    this->height = height;
+    theRectangle.setHeight(height);
 }
 
 int BlockConfigItem::getLives() const

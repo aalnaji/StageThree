@@ -5,7 +5,8 @@ enum Item
 {
     BALL = 0,
     BLOCK,
-    BOX
+    BOX,
+	PADDLE
 };
 
 #endif // ITEM_H

@@ -5,18 +5,19 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QMouseEvent>
+#include <QKeyEvent>
 
 #include "config.h"
-#include "ball.h"
-#include "itemfactory.h"
-#include "item.h"
+#include "AbstractResponsibility.h"
 
 namespace Ui
 {
     class Dialog;
 }
 
-class Dialog : public QDialog
+class Paddle;
+
+class Dialog : public QDialog, public AbstractResponsibility
 {
     Q_OBJECT
 
@@ -29,8 +30,12 @@ public:
     QGraphicsScene * getScene();
 
     void mousePressEvent(QMouseEvent *event);
+	/** Start the chain of responsibility for key presses by overloading the
+	 * method. */
+	void keyPressEvent(QKeyEvent *);
 
-
+	/** Handle the key presses for the dialog window, i.e., act on Q to quit. */
+	void handleKeyPress(Event *);
 public slots:
     void nextFrame();
 
@@ -39,8 +44,6 @@ private:
     QGraphicsView *view;
     QGraphicsScene *scene;
     Config *config;
-
-    int zCount;
 };
 
 #endif // DIALOG_H

@@ -2,19 +2,18 @@
 #define BALLCONFIGITEM_H
 
 #include <QColor>
-#include <iostream>
 #include <QRect>
+#include <QPointF>
+#include <QVector2D>
 
 #include "configitem.h"
-#include "item.h"
-#include "defaults.h"
 
+/** The config item for a ball. Reworked to interface better with
+ * a QGraphicsItem. */
 class BallConfigItem : public ConfigItem
 {
 public:
     BallConfigItem();
-
-    ~BallConfigItem();
 
     bool validate(int height, int width) const;
 
@@ -22,30 +21,28 @@ public:
 
     void addParameter(std::string name, double value);
 
-    int getXCoordinate() const;
+	/** Setters and getters for the coordinates. */
+	inline QPointF getCoordinates() const { return coordinate; };
+	inline void setCoordinate(QPointF const &ncoor) { coordinate= ncoor; };
     void setXCoordinate(int);
-
-    int getYCoordinate() const;
     void setYCoordinate(int);
 
-    int getRadius() const;
+	inline int getRadius() const { return radius; };
     void setRadius(int);
 
-    float getXVelocity() const;
+	/** Methods to care about the velocity. */
+	QVector2D getVelocity() const { return velocity; };
+    void setVelocity(float, float);
     void setXVelocity(float);
-
-    float getYVelocity() const;
     void setYVelocity(float);
 
     QColor getColor() const;
     void setHue(float);
 
 private:
-    int xCoordinate;
-    int yCoordinate;
+    QPointF coordinate;
     int radius;
-    float xVelocity;
-    float yVelocity;
+	QVector2D velocity;
     QColor color;
 };
 

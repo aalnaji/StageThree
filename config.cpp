@@ -1,5 +1,7 @@
-#include "Config.h"
-
+#include "config.h"
+#include "ballconfigitem.h"
+#include "blockconfigitem.h"
+#include "paddleconfigitem.h"
 /**
  * @brief stripColons - Helper method. Removes any colons from a word. Used for backwards compatibility.
  * @param s
@@ -72,6 +74,8 @@ void Config::readFile()
                 currentItem = add(new BallConfigItem());
             } else if (line == "[BLOCK]") {
                 currentItem = add(new BlockConfigItem());
+			} else if (line == "[PADDLE]") {
+                currentItem = add(new PaddleConfigItem());				
             } else if (line.length() > 0) {
                 std::istringstream stream(line);
                 stream >> name >> value;
