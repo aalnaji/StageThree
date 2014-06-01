@@ -2,6 +2,8 @@
 #include "ballconfigitem.h"
 #include "blockconfigitem.h"
 #include "paddleconfigitem.h"
+#include "levelconfigitem.h"
+
 /**
  * @brief stripColons - Helper method. Removes any colons from a word. Used for backwards compatibility.
  * @param s
@@ -18,8 +20,6 @@ std::string stripColons(std::string s)
     return newStr;
 }
 
-
-
 /**
  * @brief Config::Config Construct a config and read in from the default location.
  */
@@ -28,6 +28,13 @@ Config::Config()
     , height(Defaults::BOX_HEIGHT)
 {
     readFile();
+}
+
+/** Delete the config items on config deletion. */
+Config::~Config()
+{
+	for(std::vector<ConfigItem *>::iterator iter(configItems.begin()); iter!= configItems.end(); ++iter)
+		delete *iter;
 }
 
 size_t Config::size() const
@@ -66,6 +73,7 @@ void Config::readFile()
     }
     if (file.is_open()) {
         ConfigItem *currentItem = NULL;
+		LevelConfigItem *currentLevel = NULL;
 
         while (std::getline(file, line)) {
             if (line == "[BOX]") {
@@ -73,9 +81,14 @@ void Config::readFile()
             } else if (line == "[BALL]") {
                 currentItem = add(new BallConfigItem());
             } else if (line == "[BLOCK]") {
-                currentItem = add(new BlockConfigItem());
+				if(!currentLevel)
+					currentLevel = new LevelConfigItem();
+                currentItem = currentLevel->add(new BlockConfigItem());
 			} else if (line == "[PADDLE]") {
-                currentItem = add(new PaddleConfigItem());				
+                currentItem = add(new PaddleConfigItem());
+			} else if (line == "[LEVEL]") {
+				currentLevel= new LevelConfigItem();
+                currentItem = add(currentLevel);
             } else if (line.length() > 0) {
                 std::istringstream stream(line);
                 stream >> name >> value;

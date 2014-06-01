@@ -1,0 +1,103 @@
+\hypertarget{classDialog}{\section{Dialog Class Reference}
+\label{classDialog}\index{Dialog@{Dialog}}
+}
+Inheritance diagram for Dialog\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDialog}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classDialog_a8bc4fe3b0cc12033369b49eab8751e14}{void {\bfseries next\-Frame} ()}\label{classDialog_a8bc4fe3b0cc12033369b49eab8751e14}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classDialog_a92143e1be7913dd7cdb93a3abfc53ebc}{{\bfseries Dialog} (\hyperlink{classConfig}{Config} $\ast$config, Q\-Widget $\ast$parent=0)}\label{classDialog_a92143e1be7913dd7cdb93a3abfc53ebc}
+
+\item 
+\hyperlink{classDialog_a2a1fe6ef28513eed13bfcd3a4da83ccb}{$\sim$\-Dialog} ()
+\item 
+void \hyperlink{classDialog_a95aaa4d78bda5c07650d383d3c5292ac}{mouse\-Press\-Event} (Q\-Mouse\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classDialog_a95aaa4d78bda5c07650d383d3c5292ac}{Dialog\-::mouse\-Press\-Event} stores the. \end{DoxyCompactList}\item 
+void \hyperlink{classDialog_a97894cd3d240b62d9da4f915b9e16a12}{key\-Press\-Event} (Q\-Key\-Event $\ast$)
+\item 
+void \hyperlink{classDialog_a64bf1a64d37efa953896fbc106f55a56}{handle\-Event} (\hyperlink{classEvent}{Event} $\ast$)
+\item 
+void \hyperlink{classDialog_ae1dd568c8ea45c8aa7782a5de28846ea}{start\-Timer} ()
+\item 
+void \hyperlink{classDialog_accd61d9aca9f76417c2129c04d0e7dcf}{stop\-Timer} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classDialog_a2a1fe6ef28513eed13bfcd3a4da83ccb}{\index{Dialog@{Dialog}!$\sim$\-Dialog@{$\sim$\-Dialog}}
+\index{$\sim$\-Dialog@{$\sim$\-Dialog}!Dialog@{Dialog}}
+\subsubsection[{$\sim$\-Dialog}]{\setlength{\rightskip}{0pt plus 5cm}Dialog\-::$\sim$\-Dialog (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classDialog_a2a1fe6ef28513eed13bfcd3a4da83ccb}
+Destroy the object, freeing all memory. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classDialog_a64bf1a64d37efa953896fbc106f55a56}{\index{Dialog@{Dialog}!handle\-Event@{handle\-Event}}
+\index{handle\-Event@{handle\-Event}!Dialog@{Dialog}}
+\subsubsection[{handle\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\-::handle\-Event (
+\begin{DoxyParamCaption}
+\item[{{\bf Event} $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classDialog_a64bf1a64d37efa953896fbc106f55a56}
+Handle the key presses for the dialog window, i.\-e., act on Q to quit. 
+
+Reimplemented from \hyperlink{classAbstractResponsibility_a14d885884ae4841dbe7c5824b986f2c9}{Abstract\-Responsibility}.
+
+\hypertarget{classDialog_a97894cd3d240b62d9da4f915b9e16a12}{\index{Dialog@{Dialog}!key\-Press\-Event@{key\-Press\-Event}}
+\index{key\-Press\-Event@{key\-Press\-Event}!Dialog@{Dialog}}
+\subsubsection[{key\-Press\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\-::key\-Press\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Key\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{classDialog_a97894cd3d240b62d9da4f915b9e16a12}
+Start the chain of responsibility for key presses by overloading the method. \hypertarget{classDialog_a95aaa4d78bda5c07650d383d3c5292ac}{\index{Dialog@{Dialog}!mouse\-Press\-Event@{mouse\-Press\-Event}}
+\index{mouse\-Press\-Event@{mouse\-Press\-Event}!Dialog@{Dialog}}
+\subsubsection[{mouse\-Press\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\-::mouse\-Press\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Mouse\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{classDialog_a95aaa4d78bda5c07650d383d3c5292ac}
+
+
+\hyperlink{classDialog_a95aaa4d78bda5c07650d383d3c5292ac}{Dialog\-::mouse\-Press\-Event} stores the. 
+
+Handle mouse clicks.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDialog_ae1dd568c8ea45c8aa7782a5de28846ea}{\index{Dialog@{Dialog}!start\-Timer@{start\-Timer}}
+\index{start\-Timer@{start\-Timer}!Dialog@{Dialog}}
+\subsubsection[{start\-Timer}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\-::start\-Timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classDialog_ae1dd568c8ea45c8aa7782a5de28846ea}
+(Re-\/)Start the timer. \hypertarget{classDialog_accd61d9aca9f76417c2129c04d0e7dcf}{\index{Dialog@{Dialog}!stop\-Timer@{stop\-Timer}}
+\index{stop\-Timer@{stop\-Timer}!Dialog@{Dialog}}
+\subsubsection[{stop\-Timer}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\-::stop\-Timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classDialog_accd61d9aca9f76417c2129c04d0e7dcf}
+Stop the timer. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+dialog.\-h\item 
+dialog.\-cpp\end{DoxyCompactItemize}

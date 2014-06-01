@@ -4,14 +4,15 @@
 #include <iostream>
 
 #include "score.h"
+#include "defaults.h"
 
 /** Create a score object. The object is responsible for displaying its contents. */
 Score::Score()
 	: score(0)
 {
-	setBrush(QBrush(QColor("yellow")));
+	setBrush(QBrush(Defaults::DEFAULT_FONT_COLOR));
 	setZValue(10);
-	setFont(QFont("sans", 15, 2));
+	setFont(Defaults::DEFAULT_FONT);
 }
 
 /** Clear the score. */
@@ -42,5 +43,4 @@ Score &Score::get()
 void Score::updateScore() {
 	QString scoreString(QString("%1").arg(score, 10, 10, QChar('0')));
 	setText(scoreString);
-	std::cout<< scoreString.toStdString()<< std::endl;
 }

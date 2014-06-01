@@ -8,6 +8,16 @@
 class PaddleConfigItem;
 class QPainter;
 
+/**
+ * The paddle is used to let the ball bounce of. Furthermore
+ * does it store the number of its lives and is also responsible for displaying
+ * them. The paddle observes the chain of responsibility to look for BallLostEvents,
+ * certain key stroke events and may trigger the OutOfLives event, when all lives
+ * are void. When a OutOfLives event is seen, but lives are still present, then
+ * the game ends because all blocks have been destroyed and no more levels are
+ * present. The paddle then adds 100 points for every live left.
+ * @brief Implement the paddle a the bottom of the screen
+ */
 class Paddle : public QGraphicsRectItem, public AbstractResponsibility
 {
 public:

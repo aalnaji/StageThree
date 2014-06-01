@@ -17,6 +17,9 @@ public:
 
     virtual void addParameter(std::string name, double value) = 0;
 
+	/** Add virtual destructor, to make sure all derived classes' objects
+	 * are destroyed correctly. */
+	virtual ~ConfigItem() {};
 };
 
 #endif // CONFIGITEM_H

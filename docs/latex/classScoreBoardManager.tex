@@ -1,0 +1,61 @@
+\hypertarget{classScoreBoardManager}{\section{Score\-Board\-Manager Class Reference}
+\label{classScoreBoardManager}\index{Score\-Board\-Manager@{Score\-Board\-Manager}}
+}
+
+
+Manage displaying the score board and name entry.  
+
+
+
+
+{\ttfamily \#include $<$scoreboardmanager.\-h$>$}
+
+Inheritance diagram for Score\-Board\-Manager\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classScoreBoardManager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classScoreBoardManager_a528501925af6d9d63186b29213af7456}{Score\-Board\-Manager} (\hyperlink{classDialog}{Dialog} $\ast$par)
+\item 
+void \hyperlink{classScoreBoardManager_a6dd53564ed29caaa34a043d62dbd113c}{handle\-Event} (\hyperlink{classEvent}{Event} $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Manage displaying the score board and name entry. 
+
+Manage a score board, i.\-e., on pressing s the score board window is opened, on game over the score board with the ability to enter ones name is to be displayed. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classScoreBoardManager_a528501925af6d9d63186b29213af7456}{\index{Score\-Board\-Manager@{Score\-Board\-Manager}!Score\-Board\-Manager@{Score\-Board\-Manager}}
+\index{Score\-Board\-Manager@{Score\-Board\-Manager}!ScoreBoardManager@{Score\-Board\-Manager}}
+\subsubsection[{Score\-Board\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}Score\-Board\-Manager\-::\-Score\-Board\-Manager (
+\begin{DoxyParamCaption}
+\item[{{\bf Dialog} $\ast$}]{par}
+\end{DoxyParamCaption}
+)}}\label{classScoreBoardManager_a528501925af6d9d63186b29213af7456}
+Hook ourself into the chain of responsibility, to watch out for s key presses or Out\-Of\-Lives\-Events. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classScoreBoardManager_a6dd53564ed29caaa34a043d62dbd113c}{\index{Score\-Board\-Manager@{Score\-Board\-Manager}!handle\-Event@{handle\-Event}}
+\index{handle\-Event@{handle\-Event}!ScoreBoardManager@{Score\-Board\-Manager}}
+\subsubsection[{handle\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Score\-Board\-Manager\-::handle\-Event (
+\begin{DoxyParamCaption}
+\item[{{\bf Event} $\ast$}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classScoreBoardManager_a6dd53564ed29caaa34a043d62dbd113c}
+Handle presses of s key and Out\-Of\-Live\-Events. 
+
+Reimplemented from \hyperlink{classAbstractResponsibility_a14d885884ae4841dbe7c5824b986f2c9}{Abstract\-Responsibility}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+scoreboardmanager.\-h\item 
+scoreboardmanager.\-cpp\end{DoxyCompactItemize}

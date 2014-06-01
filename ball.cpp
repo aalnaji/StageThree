@@ -35,14 +35,18 @@ void Ball::advance(int phase)
 	QPointF futurePos(pos()+ velocity.toPointF());
 
     // Bounce off walls...
-    if (futurePos.y() <= 0)                                   velocity.setY(-velocity.y()); // left
-    else if (futurePos.x() <= 0)                              velocity.setX(-velocity.x()); // top
-    else if (futurePos.y() >= scene()->height()- 2.0* radius) velocity.setY(-velocity.y()); // right
-	else if (futurePos.x() >= scene()->width()- 2.0* radius){
-		velocity.setX(-velocity.x()); // bottom
+    if (futurePos.y() <= 0)
+		velocity.setY(-velocity.y()); // left
+    else if (futurePos.x() <= 0)
+		velocity.setX(-velocity.x()); // top
+	else if (futurePos.y() >= scene()->height()- 2.0* radius) {
+		velocity.setY(-velocity.y()); // right
 		BallLostEvent ballost;
 		ChainOfResponsibility::get().handleEvent(&ballost);
-	}
+	} else if (futurePos.x() >= scene()->width()- 2.0* radius)
+		velocity.setX(-velocity.x()); // bottom
+
+
 
 	moveBy(velocity.x(), velocity.y());
 
@@ -161,7 +165,6 @@ void Ball::advance(int phase)
                 }
 
             } else {
-				std::cout<< "Edge collision"<< std::endl;
                 // It's a collision on the corners of the block...
                 // Get the distance to the 4 corner points and find the closet.
                 QPointF northEastCorner(box.topRight());

@@ -6,7 +6,8 @@ enum Item
     BALL = 0,
     BLOCK,
     BOX,
-	PADDLE
+	PADDLE,
+	LEVEL
 };
 
 #endif // ITEM_H

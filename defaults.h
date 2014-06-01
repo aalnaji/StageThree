@@ -2,12 +2,18 @@
 #define DEFAULTS_H
 
 #include <QColor>
+#include <QFont>
 
 namespace Defaults
 {
 
 //change this path depending on the location of your config file
-const std::string CONFIG_PATH ="//Users//Alnaji//Documents//info3220//A3//v1//AssignmentThreeBaseFour//config.config";
+const std::string CONFIG_PATH ="config.config";
+const QString HIGHSCORE_PATH = "breakoutscore";
+
+// Set a default font and color for texts displayed in the game window
+const QFont DEFAULT_FONT("sans", 15, 2);
+const QColor DEFAULT_FONT_COLOR("yellow");
 
 // BOX DEFAULTS
 const int BOX_HEIGHT = 500;
@@ -37,6 +43,10 @@ const int PADDLE_X_COORDINATE = BOX_WIDTH/ 2- PADDLE_WIDTH/ 2;
 const int PADDLE_Y_COORDINATE = BOX_HEIGHT- PADDLE_HEIGHT;
 const QColor PADDLE_COLOR = "#888888";
 const unsigned int PADDLE_LIVES = 3;
+
+// LEVEL_DEFAULTS
+const int LEVEL_NUM = 1;
+const int LEVEL_UPDATE_WAIT = 1000;
 }
 
 

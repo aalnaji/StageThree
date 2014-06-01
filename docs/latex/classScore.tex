@@ -1,0 +1,83 @@
+\hypertarget{classScore}{\section{Score Class Reference}
+\label{classScore}\index{Score@{Score}}
+}
+
+
+Store the score in a game.  
+
+
+
+
+{\ttfamily \#include $<$score.\-h$>$}
+
+Inheritance diagram for Score\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classScore}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classScore_a32804ba9a847e58160e6e0cef46e1f25}{reset} ()
+\item 
+void \hyperlink{classScore_a3200804353edce251558f3a7ec40a195}{add} (int n)
+\item 
+int \hyperlink{classScore_a41b9a02dabc787db4d96021cf7b8b442}{get\-Score} () const 
+\item 
+void \hyperlink{classScore_ad4ffb432a3313d65f29b5448e61b6d50}{operator delete} (void $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classScore}{Score} \& \hyperlink{classScore_a57963d0e399308580bd08c15f7ef52a2}{get} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Store the score in a game. 
+
+Implements a counter of points. The class is implemented as a Singleton. Special care had to be taken to taken on object destruction, because the scene take ownership of its items and deletes them on destruction. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classScore_a3200804353edce251558f3a7ec40a195}{\index{Score@{Score}!add@{add}}
+\index{add@{add}!Score@{Score}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}void Score\-::add (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{classScore_a3200804353edce251558f3a7ec40a195}
+Add the given value to the score. \hypertarget{classScore_a57963d0e399308580bd08c15f7ef52a2}{\index{Score@{Score}!get@{get}}
+\index{get@{get}!Score@{Score}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Score} \& Score\-::get (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classScore_a57963d0e399308580bd08c15f7ef52a2}
+Get the only instance of the score. \hypertarget{classScore_a41b9a02dabc787db4d96021cf7b8b442}{\index{Score@{Score}!get\-Score@{get\-Score}}
+\index{get\-Score@{get\-Score}!Score@{Score}}
+\subsubsection[{get\-Score}]{\setlength{\rightskip}{0pt plus 5cm}int Score\-::get\-Score (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classScore_a41b9a02dabc787db4d96021cf7b8b442}
+Get the score. \hypertarget{classScore_ad4ffb432a3313d65f29b5448e61b6d50}{\index{Score@{Score}!operator delete@{operator delete}}
+\index{operator delete@{operator delete}!Score@{Score}}
+\subsubsection[{operator delete}]{\setlength{\rightskip}{0pt plus 5cm}void Score\-::operator delete (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classScore_ad4ffb432a3313d65f29b5448e61b6d50}
+Avoid deleting a score object. The singleton is stored in the scene, which takes ownership and deletes the item on destruction. Overwriting the delete-\/operator prevents this. \hypertarget{classScore_a32804ba9a847e58160e6e0cef46e1f25}{\index{Score@{Score}!reset@{reset}}
+\index{reset@{reset}!Score@{Score}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void Score\-::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classScore_a32804ba9a847e58160e6e0cef46e1f25}
+Clear the score. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+score.\-h\item 
+score.\-cpp\end{DoxyCompactItemize}

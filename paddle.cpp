@@ -4,6 +4,9 @@
 #include <QPainter>
 #include <QKeyEvent>
 #include "Events.h"
+#include "chainofresponsibility.h"
+#include "defaults.h"
+#include "score.h"
 
 /** Create a new paddle to let the ball bounce of. */
 Paddle::Paddle(PaddleConfigItem *config)
@@ -13,8 +16,8 @@ Paddle::Paddle(PaddleConfigItem *config)
 {
 	setPos(config->getPos());
 	setBrush(QBrush(config->getColor()));
-	livesDisplay->setFont(QFont("sans", 15, 2));
-	livesDisplay->setBrush(QBrush(QColor("yellow")));
+	livesDisplay->setFont(Defaults::DEFAULT_FONT);
+	livesDisplay->setBrush(QBrush(Defaults::DEFAULT_FONT_COLOR));
 	livesDisplay->setZValue(10);
 	livesDisplay->setPos(5,5);
 }
@@ -28,11 +31,17 @@ void Paddle::handleEvent(Event *event) {
 	if((ke= dynamic_cast<KeyEvent *>(event))) {
 		QPointF p(pos());
 		if(ke->keycode == Qt::Key_K) {
+			// Prevent moves when dead, but consume keys
+			if(!lives)
+				return;
 			if(p.x()- delta> 0.0)
 				moveBy(-delta, 0.0);
 			else
 				setPos(0.0, p.y());
 		} else if(ke->keycode == Qt::Key_L) {
+			// Prevent moves when dead, but consume keys
+			if(!lives)
+				return;
 			if(p.x()+ rect().width()+ delta< scene()->width())
 				moveBy(delta, 0.0);
 			else
@@ -42,6 +51,9 @@ void Paddle::handleEvent(Event *event) {
 			AbstractResponsibility::handleEvent(event);
 	} else if(dynamic_cast<BallLostEvent *>(event)) {
 		decLives();
+	} else if(dynamic_cast<OutOfLivesEvent *>(event)&& lives) {
+		/* All block destroyed. For each remaining live add 100 points. */
+		Score::get().add(lives* 100);
 	} else
 		/* This event is not for use, hand it down the chain. */
 		AbstractResponsibility::handleEvent(event);
@@ -59,10 +71,15 @@ QVariant Paddle::itemChange(QGraphicsItem::GraphicsItemChange change, const QVar
 /** Decrement the number of lives and react, if it is zero. */
 void Paddle::decLives()
 {
+	/* Prevent decrement below zero. */
+	if(!lives)
+		return;
+
 	--lives;
 	livesDisplay->setText(QString("Lives: %1").arg(lives));
 	if(!lives)
 	{
-
+		OutOfLivesEvent oolEvent;
+		ChainOfResponsibility::get().handleEvent(&oolEvent);
 	}
 }

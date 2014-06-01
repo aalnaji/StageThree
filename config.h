@@ -16,6 +16,8 @@ class Config
 {
 public:
     Config();
+	/** Delete the config items on config deletion. */
+	~Config();
 
     size_t size() const;
 

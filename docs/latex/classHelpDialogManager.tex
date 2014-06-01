@@ -1,0 +1,61 @@
+\hypertarget{classHelpDialogManager}{\section{Help\-Dialog\-Manager Class Reference}
+\label{classHelpDialogManager}\index{Help\-Dialog\-Manager@{Help\-Dialog\-Manager}}
+}
+
+
+Display a window with a help text.  
+
+
+
+
+{\ttfamily \#include $<$helpdialogmanager.\-h$>$}
+
+Inheritance diagram for Help\-Dialog\-Manager\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classHelpDialogManager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classHelpDialogManager_a49833ac06771933b331799ee2ce42dc7}{Help\-Dialog\-Manager} (\hyperlink{classDialog}{Dialog} $\ast$par)
+\item 
+void \hyperlink{classHelpDialogManager_a5f4d590400c9dc4c3120f8d15ce6b977}{handle\-Event} (\hyperlink{classEvent}{Event} $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Display a window with a help text. 
+
+Manage opening a help dialog. The manager waits for key presses of h and ? to display a help window. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classHelpDialogManager_a49833ac06771933b331799ee2ce42dc7}{\index{Help\-Dialog\-Manager@{Help\-Dialog\-Manager}!Help\-Dialog\-Manager@{Help\-Dialog\-Manager}}
+\index{Help\-Dialog\-Manager@{Help\-Dialog\-Manager}!HelpDialogManager@{Help\-Dialog\-Manager}}
+\subsubsection[{Help\-Dialog\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}Help\-Dialog\-Manager\-::\-Help\-Dialog\-Manager (
+\begin{DoxyParamCaption}
+\item[{{\bf Dialog} $\ast$}]{par}
+\end{DoxyParamCaption}
+)}}\label{classHelpDialogManager_a49833ac06771933b331799ee2ce42dc7}
+Hook ourself into the chain of responsibility, to watch out for help key presses. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classHelpDialogManager_a5f4d590400c9dc4c3120f8d15ce6b977}{\index{Help\-Dialog\-Manager@{Help\-Dialog\-Manager}!handle\-Event@{handle\-Event}}
+\index{handle\-Event@{handle\-Event}!HelpDialogManager@{Help\-Dialog\-Manager}}
+\subsubsection[{handle\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Help\-Dialog\-Manager\-::handle\-Event (
+\begin{DoxyParamCaption}
+\item[{{\bf Event} $\ast$}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classHelpDialogManager_a5f4d590400c9dc4c3120f8d15ce6b977}
+Handle presses of h and ? keys. 
+
+Reimplemented from \hyperlink{classAbstractResponsibility_a14d885884ae4841dbe7c5824b986f2c9}{Abstract\-Responsibility}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+helpdialogmanager.\-h\item 
+helpdialogmanager.\-cpp\end{DoxyCompactItemize}

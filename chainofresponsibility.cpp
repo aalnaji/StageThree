@@ -14,6 +14,24 @@ void ChainOfResponsibility::add(AbstractResponsibility *n)
 	first= n;
 }
 
+/** Remove the member given. */
+void ChainOfResponsibility::remove(AbstractResponsibility *item)
+{
+	if(first== item)
+		first= item->next;
+	else {
+		AbstractResponsibility *prev, *next(first->next);
+		prev= first;
+		while(next&& item!=next) {
+			prev= next;
+			next= next->next;
+		}
+		if(next&& item== next)
+			prev->next= item->next;
+	}
+
+}
+
 /** Propagate an event through the chain of responsibility. */
 void ChainOfResponsibility::handleEvent(Event *event)
 {
@@ -25,4 +43,9 @@ ChainOfResponsibility &ChainOfResponsibility::get()
 {
 	static ChainOfResponsibility instance;
 	return instance;
+}
+
+/** Needed for testing only. */
+void ChainOfResponsibility::reset() {
+	first= 0;
 }

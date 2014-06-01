@@ -13,6 +13,8 @@ QGraphicsItem* ItemFactory::make(ConfigItem *config)
         break;
 	case PADDLE:
 		return new Paddle((PaddleConfigItem *)config);
+	case LEVEL:
+		return NULL;
     default:
         return NULL;
     }

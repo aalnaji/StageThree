@@ -1,0 +1,100 @@
+\hypertarget{classAbstractResponsibility}{\section{Abstract\-Responsibility Class Reference}
+\label{classAbstractResponsibility}\index{Abstract\-Responsibility@{Abstract\-Responsibility}}
+}
+
+
+Chain of responsibility participants base class.  
+
+
+
+
+{\ttfamily \#include $<$Abstract\-Responsibility.\-h$>$}
+
+Inheritance diagram for Abstract\-Responsibility\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.555556cm]{classAbstractResponsibility}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAbstractResponsibility_ab11b9ec178012c0ab361ef4abe8be9e9}{Abstract\-Responsibility} ()
+\item 
+virtual \hyperlink{classAbstractResponsibility_af7ae360c861e5ba2e9024c830a3526c5}{$\sim$\-Abstract\-Responsibility} ()
+\item 
+void \hyperlink{classAbstractResponsibility_a9108e8a0a63112ef3077da388ed19eba}{add2\-Chain} (\hyperlink{classAbstractResponsibility}{Abstract\-Responsibility} $\ast$n)
+\item 
+virtual void \hyperlink{classAbstractResponsibility_a14d885884ae4841dbe7c5824b986f2c9}{handle\-Event} (\hyperlink{classEvent}{Event} $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAbstractResponsibility}{Abstract\-Responsibility} $\ast$ \hyperlink{classAbstractResponsibility_a2af04f271483fd99267d5f6205ec257f}{next}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classAbstractResponsibility_a481df313240bacf48790db6d338f51d0}{Chain\-Of\-Responsibility}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Chain of responsibility participants base class. 
+
+All objects that want to participate in the chain of responsibilities have to be derived from these class and implement the \hyperlink{classAbstractResponsibility_a14d885884ae4841dbe7c5824b986f2c9}{handle\-Event()} method. \hyperlink{classAbstractResponsibility_a14d885884ae4841dbe7c5824b986f2c9}{handle\-Event()} gets the event to handle and when the object decides to consume the event it just has to quit \hyperlink{classAbstractResponsibility_a14d885884ae4841dbe7c5824b986f2c9}{handle\-Event()}, if it does no consume event, then the base class' \hyperlink{classAbstractResponsibility_a14d885884ae4841dbe7c5824b986f2c9}{handle\-Event()} has to be called to enable propagation along the chain. This class in combination with \hyperlink{classChainOfResponsibility}{Chain\-Of\-Responsibility} implements the behavioural design pattern Chain Of Responsibility (p. 223 in Go\-F-\/book). 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classAbstractResponsibility_ab11b9ec178012c0ab361ef4abe8be9e9}{\index{Abstract\-Responsibility@{Abstract\-Responsibility}!Abstract\-Responsibility@{Abstract\-Responsibility}}
+\index{Abstract\-Responsibility@{Abstract\-Responsibility}!AbstractResponsibility@{Abstract\-Responsibility}}
+\subsubsection[{Abstract\-Responsibility}]{\setlength{\rightskip}{0pt plus 5cm}Abstract\-Responsibility\-::\-Abstract\-Responsibility (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classAbstractResponsibility_ab11b9ec178012c0ab361ef4abe8be9e9}
+Ensure that the next pointer is initialized (to null) \hypertarget{classAbstractResponsibility_af7ae360c861e5ba2e9024c830a3526c5}{\index{Abstract\-Responsibility@{Abstract\-Responsibility}!$\sim$\-Abstract\-Responsibility@{$\sim$\-Abstract\-Responsibility}}
+\index{$\sim$\-Abstract\-Responsibility@{$\sim$\-Abstract\-Responsibility}!AbstractResponsibility@{Abstract\-Responsibility}}
+\subsubsection[{$\sim$\-Abstract\-Responsibility}]{\setlength{\rightskip}{0pt plus 5cm}virtual Abstract\-Responsibility\-::$\sim$\-Abstract\-Responsibility (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classAbstractResponsibility_af7ae360c861e5ba2e9024c830a3526c5}
+To prevent future compiler warnings, install a virtual destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classAbstractResponsibility_a9108e8a0a63112ef3077da388ed19eba}{\index{Abstract\-Responsibility@{Abstract\-Responsibility}!add2\-Chain@{add2\-Chain}}
+\index{add2\-Chain@{add2\-Chain}!AbstractResponsibility@{Abstract\-Responsibility}}
+\subsubsection[{add2\-Chain}]{\setlength{\rightskip}{0pt plus 5cm}void Abstract\-Responsibility\-::add2\-Chain (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\-Responsibility} $\ast$}]{n}
+\end{DoxyParamCaption}
+)}}\label{classAbstractResponsibility_a9108e8a0a63112ef3077da388ed19eba}
+Add the given link to the chain, by putting us in front of it. \hypertarget{classAbstractResponsibility_a14d885884ae4841dbe7c5824b986f2c9}{\index{Abstract\-Responsibility@{Abstract\-Responsibility}!handle\-Event@{handle\-Event}}
+\index{handle\-Event@{handle\-Event}!AbstractResponsibility@{Abstract\-Responsibility}}
+\subsubsection[{handle\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Abstract\-Responsibility\-::handle\-Event (
+\begin{DoxyParamCaption}
+\item[{{\bf Event} $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classAbstractResponsibility_a14d885884ae4841dbe7c5824b986f2c9}
+Virtual function to handle any kind of event. Call the super-\/method to iterate through the chain. 
+
+Reimplemented in \hyperlink{classDialog_a64bf1a64d37efa953896fbc106f55a56}{Dialog}, \hyperlink{classPaddle_aef40328563790e25a73ee4c6b58fa390}{Paddle}, \hyperlink{classLevel_a01a06c7956b2090df3efb6c2834a8ee0}{Level}, \hyperlink{classScoreBoardManager_a6dd53564ed29caaa34a043d62dbd113c}{Score\-Board\-Manager}, and \hyperlink{classHelpDialogManager_a5f4d590400c9dc4c3120f8d15ce6b977}{Help\-Dialog\-Manager}.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classAbstractResponsibility_a481df313240bacf48790db6d338f51d0}{\index{Abstract\-Responsibility@{Abstract\-Responsibility}!Chain\-Of\-Responsibility@{Chain\-Of\-Responsibility}}
+\index{Chain\-Of\-Responsibility@{Chain\-Of\-Responsibility}!AbstractResponsibility@{Abstract\-Responsibility}}
+\subsubsection[{Chain\-Of\-Responsibility}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Chain\-Of\-Responsibility}\hspace{0.3cm}{\ttfamily [friend]}}}\label{classAbstractResponsibility_a481df313240bacf48790db6d338f51d0}
+Make the Chain a friend to allow removal from the chain. 
+
+\subsection{Member Data Documentation}
+\hypertarget{classAbstractResponsibility_a2af04f271483fd99267d5f6205ec257f}{\index{Abstract\-Responsibility@{Abstract\-Responsibility}!next@{next}}
+\index{next@{next}!AbstractResponsibility@{Abstract\-Responsibility}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Abstract\-Responsibility}$\ast$ Abstract\-Responsibility\-::next\hspace{0.3cm}{\ttfamily [protected]}}}\label{classAbstractResponsibility_a2af04f271483fd99267d5f6205ec257f}
+The pointer to the next item in the chain of responsibility. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Abstract\-Responsibility.\-h\item 
+Abstract\-Responsibility.\-cpp\end{DoxyCompactItemize}

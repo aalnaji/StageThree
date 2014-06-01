@@ -1,0 +1,160 @@
+\hypertarget{classLevelConfigItem}{\section{Level\-Config\-Item Class Reference}
+\label{classLevelConfigItem}\index{Level\-Config\-Item@{Level\-Config\-Item}}
+}
+
+
+Store config-\/file data of a level.  
+
+
+
+
+{\ttfamily \#include $<$levelconfigitem.\-h$>$}
+
+Inheritance diagram for Level\-Config\-Item\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLevelConfigItem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLevelConfigItem_abefbac4a4cf846ab666d8836472b91b6}{Level\-Config\-Item} ()
+\item 
+\hyperlink{classLevelConfigItem_ae75692250e03ea40d77853e5af1dd36d}{$\sim$\-Level\-Config\-Item} ()
+\item 
+bool \hyperlink{classLevelConfigItem_af717103b0881d4512dbee6f3c509c568}{validate} (int height, int width) const 
+\item 
+Item \hyperlink{classLevelConfigItem_aed6d6c4ff654506d582732a77ec96056}{get\-Item\-Type} () const 
+\item 
+void \hyperlink{classLevelConfigItem_a7a8b3d45729b0351ee590f7fdc5a4e5f}{add\-Parameter} (std\-::string name, double value)
+\item 
+\hyperlink{classConfigItem}{Config\-Item} $\ast$ \hyperlink{classLevelConfigItem_a4e47772ef1d7d5062979424129f4d3e4}{add} (\hyperlink{classConfigItem}{Config\-Item} $\ast$new\-Item)
+\item 
+void \hyperlink{classLevelConfigItem_aafa487a690ee7bea2111969dc4369ed2}{set\-Level\-Num} (int const n\-Level\-Num)
+\item 
+int \hyperlink{classLevelConfigItem_a828bcca5a829b7cb1df12b20406ae982}{get\-Level\-Num} () const 
+\item 
+void \hyperlink{classLevelConfigItem_ae49bc07589a7117d4aaecf4bf4c2376c}{set\-Update\-Delay} (const int n\-Update\-Wait)
+\item 
+int \hyperlink{classLevelConfigItem_a9e2c29bf67193b6ed6da6bd0c532cf80}{get\-Update\-Delay} () const 
+\item 
+\hyperlink{classConfigItem}{Config\-Item} $\ast$ \hyperlink{classLevelConfigItem_ab41db3f785b4210fb9a681379fdde0d9}{operator\mbox{[}$\,$\mbox{]}} (int i)
+\item 
+size\-\_\-t \hyperlink{classLevelConfigItem_a3b928feaf14e2e2e2e145ef0ffac566c}{size} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Store config-\/file data of a level. 
+
+Store the configuration file data of a level. Besides the configured blocks the number of the level is stored and the update intervall. A smaller update intervall make the ball faster, while leaving the paddle at the same reaction speed. \-:) 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLevelConfigItem_abefbac4a4cf846ab666d8836472b91b6}{\index{Level\-Config\-Item@{Level\-Config\-Item}!Level\-Config\-Item@{Level\-Config\-Item}}
+\index{Level\-Config\-Item@{Level\-Config\-Item}!LevelConfigItem@{Level\-Config\-Item}}
+\subsubsection[{Level\-Config\-Item}]{\setlength{\rightskip}{0pt plus 5cm}Level\-Config\-Item\-::\-Level\-Config\-Item (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLevelConfigItem_abefbac4a4cf846ab666d8836472b91b6}
+Set default values. \hypertarget{classLevelConfigItem_ae75692250e03ea40d77853e5af1dd36d}{\index{Level\-Config\-Item@{Level\-Config\-Item}!$\sim$\-Level\-Config\-Item@{$\sim$\-Level\-Config\-Item}}
+\index{$\sim$\-Level\-Config\-Item@{$\sim$\-Level\-Config\-Item}!LevelConfigItem@{Level\-Config\-Item}}
+\subsubsection[{$\sim$\-Level\-Config\-Item}]{\setlength{\rightskip}{0pt plus 5cm}Level\-Config\-Item\-::$\sim$\-Level\-Config\-Item (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLevelConfigItem_ae75692250e03ea40d77853e5af1dd36d}
+On level destruction free the configured items. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLevelConfigItem_a4e47772ef1d7d5062979424129f4d3e4}{\index{Level\-Config\-Item@{Level\-Config\-Item}!add@{add}}
+\index{add@{add}!LevelConfigItem@{Level\-Config\-Item}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Config\-Item} $\ast$ Level\-Config\-Item\-::add (
+\begin{DoxyParamCaption}
+\item[{{\bf Config\-Item} $\ast$}]{new\-Item}
+\end{DoxyParamCaption}
+)}}\label{classLevelConfigItem_a4e47772ef1d7d5062979424129f4d3e4}
+Add a config item to this levels set. \hypertarget{classLevelConfigItem_a7a8b3d45729b0351ee590f7fdc5a4e5f}{\index{Level\-Config\-Item@{Level\-Config\-Item}!add\-Parameter@{add\-Parameter}}
+\index{add\-Parameter@{add\-Parameter}!LevelConfigItem@{Level\-Config\-Item}}
+\subsubsection[{add\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}void Level\-Config\-Item\-::add\-Parameter (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name, }
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classLevelConfigItem_a7a8b3d45729b0351ee590f7fdc5a4e5f}
+Add parameters known to the level. 
+
+Implements \hyperlink{classConfigItem}{Config\-Item}.
+
+\hypertarget{classLevelConfigItem_aed6d6c4ff654506d582732a77ec96056}{\index{Level\-Config\-Item@{Level\-Config\-Item}!get\-Item\-Type@{get\-Item\-Type}}
+\index{get\-Item\-Type@{get\-Item\-Type}!LevelConfigItem@{Level\-Config\-Item}}
+\subsubsection[{get\-Item\-Type}]{\setlength{\rightskip}{0pt plus 5cm}Item Level\-Config\-Item\-::get\-Item\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classLevelConfigItem_aed6d6c4ff654506d582732a77ec96056}
+Set this items type to \hyperlink{classLevel}{Level}. 
+
+Implements \hyperlink{classConfigItem}{Config\-Item}.
+
+\hypertarget{classLevelConfigItem_a828bcca5a829b7cb1df12b20406ae982}{\index{Level\-Config\-Item@{Level\-Config\-Item}!get\-Level\-Num@{get\-Level\-Num}}
+\index{get\-Level\-Num@{get\-Level\-Num}!LevelConfigItem@{Level\-Config\-Item}}
+\subsubsection[{get\-Level\-Num}]{\setlength{\rightskip}{0pt plus 5cm}int Level\-Config\-Item\-::get\-Level\-Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelConfigItem_a828bcca5a829b7cb1df12b20406ae982}
+Get the number of this level. \hypertarget{classLevelConfigItem_a9e2c29bf67193b6ed6da6bd0c532cf80}{\index{Level\-Config\-Item@{Level\-Config\-Item}!get\-Update\-Delay@{get\-Update\-Delay}}
+\index{get\-Update\-Delay@{get\-Update\-Delay}!LevelConfigItem@{Level\-Config\-Item}}
+\subsubsection[{get\-Update\-Delay}]{\setlength{\rightskip}{0pt plus 5cm}int Level\-Config\-Item\-::get\-Update\-Delay (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelConfigItem_a9e2c29bf67193b6ed6da6bd0c532cf80}
+Get the update delay for this level. \hypertarget{classLevelConfigItem_ab41db3f785b4210fb9a681379fdde0d9}{\index{Level\-Config\-Item@{Level\-Config\-Item}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!LevelConfigItem@{Level\-Config\-Item}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Config\-Item}$\ast$ Level\-Config\-Item\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelConfigItem_ab41db3f785b4210fb9a681379fdde0d9}
+Get the i-\/th item. \hypertarget{classLevelConfigItem_aafa487a690ee7bea2111969dc4369ed2}{\index{Level\-Config\-Item@{Level\-Config\-Item}!set\-Level\-Num@{set\-Level\-Num}}
+\index{set\-Level\-Num@{set\-Level\-Num}!LevelConfigItem@{Level\-Config\-Item}}
+\subsubsection[{set\-Level\-Num}]{\setlength{\rightskip}{0pt plus 5cm}void Level\-Config\-Item\-::set\-Level\-Num (
+\begin{DoxyParamCaption}
+\item[{int const}]{n\-Level\-Num}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelConfigItem_aafa487a690ee7bea2111969dc4369ed2}
+Set the number of this level. \hypertarget{classLevelConfigItem_ae49bc07589a7117d4aaecf4bf4c2376c}{\index{Level\-Config\-Item@{Level\-Config\-Item}!set\-Update\-Delay@{set\-Update\-Delay}}
+\index{set\-Update\-Delay@{set\-Update\-Delay}!LevelConfigItem@{Level\-Config\-Item}}
+\subsubsection[{set\-Update\-Delay}]{\setlength{\rightskip}{0pt plus 5cm}void Level\-Config\-Item\-::set\-Update\-Delay (
+\begin{DoxyParamCaption}
+\item[{const int}]{n\-Update\-Wait}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelConfigItem_ae49bc07589a7117d4aaecf4bf4c2376c}
+Set the update delay for this level. \hypertarget{classLevelConfigItem_a3b928feaf14e2e2e2e145ef0ffac566c}{\index{Level\-Config\-Item@{Level\-Config\-Item}!size@{size}}
+\index{size@{size}!LevelConfigItem@{Level\-Config\-Item}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t Level\-Config\-Item\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelConfigItem_a3b928feaf14e2e2e2e145ef0ffac566c}
+Return the number of elements in this level. \hypertarget{classLevelConfigItem_af717103b0881d4512dbee6f3c509c568}{\index{Level\-Config\-Item@{Level\-Config\-Item}!validate@{validate}}
+\index{validate@{validate}!LevelConfigItem@{Level\-Config\-Item}}
+\subsubsection[{validate}]{\setlength{\rightskip}{0pt plus 5cm}bool Level\-Config\-Item\-::validate (
+\begin{DoxyParamCaption}
+\item[{int}]{height, }
+\item[{int}]{width}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classLevelConfigItem_af717103b0881d4512dbee6f3c509c568}
+Validate that this collection of configured items is in the scene. 
+
+Implements \hyperlink{classConfigItem_a0ffeae3ab9688202ad167e15ccb3be6d}{Config\-Item}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+levelconfigitem.\-h\item 
+levelconfigitem.\-cpp\end{DoxyCompactItemize}

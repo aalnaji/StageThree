@@ -1,0 +1,216 @@
+\hypertarget{classPaddleConfigItem}{\section{Paddle\-Config\-Item Class Reference}
+\label{classPaddleConfigItem}\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}}
+}
+
+
+Store and propagate the paddle's configuration.  
+
+
+
+
+{\ttfamily \#include $<$paddleconfigitem.\-h$>$}
+
+Inheritance diagram for Paddle\-Config\-Item\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPaddleConfigItem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPaddleConfigItem_aaf8327c16b6ea75fcc4472635d8d203a}{Paddle\-Config\-Item} ()
+\item 
+bool \hyperlink{classPaddleConfigItem_a4471662990213dab829792a73683fd0f}{validate} (int height, int width) const 
+\item 
+Item \hyperlink{classPaddleConfigItem_a9aff3ad1cce28b13cfb1262ce6d73acc}{get\-Item\-Type} () const 
+\item 
+Q\-Rect const \hyperlink{classPaddleConfigItem_ac4fb268e37165db4eb1367f69cdb7bc7}{get\-Rect} () const 
+\item 
+Q\-Point const \hyperlink{classPaddleConfigItem_ab089e52a94ef9ec97b2237546254ef54}{get\-Pos} () const 
+\item 
+void \hyperlink{classPaddleConfigItem_ad7b5b50b1e480e1f0b2b653e05944297}{add\-Parameter} (std\-::string name, double value)
+\item 
+int \hyperlink{classPaddleConfigItem_a69c5d3519bcaac03472d0a4377c0f45f}{get\-X\-Coordinate} () const 
+\item 
+void \hyperlink{classPaddleConfigItem_aeef3371c9228bd742a44d01bf54bb99c}{set\-X\-Coordinate} (int)
+\item 
+int \hyperlink{classPaddleConfigItem_a9750f9729e7a200de27b988407791b16}{get\-Y\-Coordinate} () const 
+\item 
+void \hyperlink{classPaddleConfigItem_ad6247bbad6123b0f294bbc49c9d82bd3}{set\-Y\-Coordinate} (int)
+\item 
+float \hyperlink{classPaddleConfigItem_ae91bd3249691e453cb70b5cd105c3254}{get\-Width} () const 
+\item 
+void \hyperlink{classPaddleConfigItem_a1ed5776eb3a49f8f6f0a7db8cd75d24b}{set\-Width} (float)
+\item 
+float \hyperlink{classPaddleConfigItem_a543c31554ea6fd4230ce741f7896c655}{get\-Height} () const 
+\item 
+void \hyperlink{classPaddleConfigItem_a36d85ab3cbe8bf6ad7fa1aa4be04bf67}{set\-Height} (float)
+\item 
+Q\-Color \hyperlink{classPaddleConfigItem_a3fb77c280dbed567ae5f6dd5e5b875ca}{get\-Color} () const 
+\item 
+void \hyperlink{classPaddleConfigItem_a2fc99562dc100b5a8a5b2f6aad8ec3a2}{set\-Hue} (float)
+\item 
+unsigned int \hyperlink{classPaddleConfigItem_a425e6121ec4927ee5c3979a5a8d44c53}{get\-Lives} () const 
+\item 
+void \hyperlink{classPaddleConfigItem_a20233cf30a4363ce3fcfd65d157ed84a}{set\-Lives} (unsigned int lives)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Store and propagate the paddle's configuration. 
+
+Store the configuration options for a paddle. This class essentially is a copy from the \hyperlink{classBlockConfigItem}{Block\-Config\-Item} with some internal changes. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPaddleConfigItem_aaf8327c16b6ea75fcc4472635d8d203a}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!Paddle\-Config\-Item@{Paddle\-Config\-Item}}
+\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{Paddle\-Config\-Item}]{\setlength{\rightskip}{0pt plus 5cm}Paddle\-Config\-Item\-::\-Paddle\-Config\-Item (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classPaddleConfigItem_aaf8327c16b6ea75fcc4472635d8d203a}
+Set defaults for attributes. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classPaddleConfigItem_ad7b5b50b1e480e1f0b2b653e05944297}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!add\-Parameter@{add\-Parameter}}
+\index{add\-Parameter@{add\-Parameter}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{add\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}void Paddle\-Config\-Item\-::add\-Parameter (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name, }
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPaddleConfigItem_ad7b5b50b1e480e1f0b2b653e05944297}
+In the configuration file after a P\-A\-D\-D\-L\-E section a parameter was found. Check if it is suitable for the paddle. 
+
+Implements \hyperlink{classConfigItem}{Config\-Item}.
+
+\hypertarget{classPaddleConfigItem_a3fb77c280dbed567ae5f6dd5e5b875ca}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!get\-Color@{get\-Color}}
+\index{get\-Color@{get\-Color}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{get\-Color}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Color Paddle\-Config\-Item\-::get\-Color (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classPaddleConfigItem_a3fb77c280dbed567ae5f6dd5e5b875ca}
+Get the color of the paddle. \hypertarget{classPaddleConfigItem_a543c31554ea6fd4230ce741f7896c655}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!get\-Height@{get\-Height}}
+\index{get\-Height@{get\-Height}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{get\-Height}]{\setlength{\rightskip}{0pt plus 5cm}float Paddle\-Config\-Item\-::get\-Height (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classPaddleConfigItem_a543c31554ea6fd4230ce741f7896c655}
+Get the height of the paddle. \hypertarget{classPaddleConfigItem_a9aff3ad1cce28b13cfb1262ce6d73acc}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!get\-Item\-Type@{get\-Item\-Type}}
+\index{get\-Item\-Type@{get\-Item\-Type}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{get\-Item\-Type}]{\setlength{\rightskip}{0pt plus 5cm}Item Paddle\-Config\-Item\-::get\-Item\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPaddleConfigItem_a9aff3ad1cce28b13cfb1262ce6d73acc}
+Identify us as a paddle. 
+
+Implements \hyperlink{classConfigItem}{Config\-Item}.
+
+\hypertarget{classPaddleConfigItem_a425e6121ec4927ee5c3979a5a8d44c53}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!get\-Lives@{get\-Lives}}
+\index{get\-Lives@{get\-Lives}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{get\-Lives}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Paddle\-Config\-Item\-::get\-Lives (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classPaddleConfigItem_a425e6121ec4927ee5c3979a5a8d44c53}
+Get the initial number of lives of this paddle.
+
+Get and set the initial number of lives of this paddle. \hypertarget{classPaddleConfigItem_ab089e52a94ef9ec97b2237546254ef54}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!get\-Pos@{get\-Pos}}
+\index{get\-Pos@{get\-Pos}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{get\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Point const Paddle\-Config\-Item\-::get\-Pos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPaddleConfigItem_ab089e52a94ef9ec97b2237546254ef54}
+Give the initial position of this paddle. \hypertarget{classPaddleConfigItem_ac4fb268e37165db4eb1367f69cdb7bc7}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!get\-Rect@{get\-Rect}}
+\index{get\-Rect@{get\-Rect}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{get\-Rect}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Rect const Paddle\-Config\-Item\-::get\-Rect (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPaddleConfigItem_ac4fb268e37165db4eb1367f69cdb7bc7}
+For easy creation of a graphics item, create a rect here. \hypertarget{classPaddleConfigItem_ae91bd3249691e453cb70b5cd105c3254}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!get\-Width@{get\-Width}}
+\index{get\-Width@{get\-Width}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{get\-Width}]{\setlength{\rightskip}{0pt plus 5cm}float Paddle\-Config\-Item\-::get\-Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classPaddleConfigItem_ae91bd3249691e453cb70b5cd105c3254}
+Get the width of the paddle. \hypertarget{classPaddleConfigItem_a69c5d3519bcaac03472d0a4377c0f45f}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!get\-X\-Coordinate@{get\-X\-Coordinate}}
+\index{get\-X\-Coordinate@{get\-X\-Coordinate}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{get\-X\-Coordinate}]{\setlength{\rightskip}{0pt plus 5cm}int Paddle\-Config\-Item\-::get\-X\-Coordinate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classPaddleConfigItem_a69c5d3519bcaac03472d0a4377c0f45f}
+Get the x coordinate. \hypertarget{classPaddleConfigItem_a9750f9729e7a200de27b988407791b16}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!get\-Y\-Coordinate@{get\-Y\-Coordinate}}
+\index{get\-Y\-Coordinate@{get\-Y\-Coordinate}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{get\-Y\-Coordinate}]{\setlength{\rightskip}{0pt plus 5cm}int Paddle\-Config\-Item\-::get\-Y\-Coordinate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classPaddleConfigItem_a9750f9729e7a200de27b988407791b16}
+Get the y coordinate. \hypertarget{classPaddleConfigItem_a36d85ab3cbe8bf6ad7fa1aa4be04bf67}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!set\-Height@{set\-Height}}
+\index{set\-Height@{set\-Height}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{set\-Height}]{\setlength{\rightskip}{0pt plus 5cm}void Paddle\-Config\-Item\-::set\-Height (
+\begin{DoxyParamCaption}
+\item[{float}]{height}
+\end{DoxyParamCaption}
+)}}\label{classPaddleConfigItem_a36d85ab3cbe8bf6ad7fa1aa4be04bf67}
+Set the height of the paddle. \hypertarget{classPaddleConfigItem_a2fc99562dc100b5a8a5b2f6aad8ec3a2}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!set\-Hue@{set\-Hue}}
+\index{set\-Hue@{set\-Hue}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{set\-Hue}]{\setlength{\rightskip}{0pt plus 5cm}void Paddle\-Config\-Item\-::set\-Hue (
+\begin{DoxyParamCaption}
+\item[{float}]{color\-Hue}
+\end{DoxyParamCaption}
+)}}\label{classPaddleConfigItem_a2fc99562dc100b5a8a5b2f6aad8ec3a2}
+Set the color hue of the paddle. \hypertarget{classPaddleConfigItem_a20233cf30a4363ce3fcfd65d157ed84a}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!set\-Lives@{set\-Lives}}
+\index{set\-Lives@{set\-Lives}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{set\-Lives}]{\setlength{\rightskip}{0pt plus 5cm}void Paddle\-Config\-Item\-::set\-Lives (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{lives}
+\end{DoxyParamCaption}
+)}}\label{classPaddleConfigItem_a20233cf30a4363ce3fcfd65d157ed84a}
+Set the initial number of lives of this paddle. \hypertarget{classPaddleConfigItem_a1ed5776eb3a49f8f6f0a7db8cd75d24b}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!set\-Width@{set\-Width}}
+\index{set\-Width@{set\-Width}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{set\-Width}]{\setlength{\rightskip}{0pt plus 5cm}void Paddle\-Config\-Item\-::set\-Width (
+\begin{DoxyParamCaption}
+\item[{float}]{width}
+\end{DoxyParamCaption}
+)}}\label{classPaddleConfigItem_a1ed5776eb3a49f8f6f0a7db8cd75d24b}
+Set the width of the paddle. \hypertarget{classPaddleConfigItem_aeef3371c9228bd742a44d01bf54bb99c}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!set\-X\-Coordinate@{set\-X\-Coordinate}}
+\index{set\-X\-Coordinate@{set\-X\-Coordinate}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{set\-X\-Coordinate}]{\setlength{\rightskip}{0pt plus 5cm}void Paddle\-Config\-Item\-::set\-X\-Coordinate (
+\begin{DoxyParamCaption}
+\item[{int}]{x\-Coordinate}
+\end{DoxyParamCaption}
+)}}\label{classPaddleConfigItem_aeef3371c9228bd742a44d01bf54bb99c}
+Set the x coordinate. \hypertarget{classPaddleConfigItem_ad6247bbad6123b0f294bbc49c9d82bd3}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!set\-Y\-Coordinate@{set\-Y\-Coordinate}}
+\index{set\-Y\-Coordinate@{set\-Y\-Coordinate}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{set\-Y\-Coordinate}]{\setlength{\rightskip}{0pt plus 5cm}void Paddle\-Config\-Item\-::set\-Y\-Coordinate (
+\begin{DoxyParamCaption}
+\item[{int}]{y\-Coordinate}
+\end{DoxyParamCaption}
+)}}\label{classPaddleConfigItem_ad6247bbad6123b0f294bbc49c9d82bd3}
+Set the y coordinate. \hypertarget{classPaddleConfigItem_a4471662990213dab829792a73683fd0f}{\index{Paddle\-Config\-Item@{Paddle\-Config\-Item}!validate@{validate}}
+\index{validate@{validate}!PaddleConfigItem@{Paddle\-Config\-Item}}
+\subsubsection[{validate}]{\setlength{\rightskip}{0pt plus 5cm}bool Paddle\-Config\-Item\-::validate (
+\begin{DoxyParamCaption}
+\item[{int}]{height, }
+\item[{int}]{width}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPaddleConfigItem_a4471662990213dab829792a73683fd0f}
+Check that the paddle is in the visible area of the window. 
+
+Implements \hyperlink{classConfigItem_a0ffeae3ab9688202ad167e15ccb3be6d}{Config\-Item}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+paddleconfigitem.\-h\item 
+paddleconfigitem.\-cpp\end{DoxyCompactItemize}

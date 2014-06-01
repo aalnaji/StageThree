@@ -1,0 +1,88 @@
+\hypertarget{classLevel}{\section{Level Class Reference}
+\label{classLevel}\index{Level@{Level}}
+}
+
+
+Implement levels and switching to next one.  
+
+
+
+
+{\ttfamily \#include $<$level.\-h$>$}
+
+Inheritance diagram for Level\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLevel}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLevel_a1ad0ac0368b30dd5389761c44e6b42db}{Level} (\hyperlink{classLevelConfigItem}{Level\-Config\-Item} const $\ast$)
+\item 
+\hyperlink{classLevel_a249eac1e8f19ff44134efa5e986feaca}{$\sim$\-Level} ()
+\item 
+void \hyperlink{classLevel_a01a06c7956b2090df3efb6c2834a8ee0}{handle\-Event} (\hyperlink{classEvent}{Event} $\ast$)
+\item 
+int \hyperlink{classLevel_ac06e7d9fa248ce159a4489b9db2e9a72}{get\-Level\-Num} () const 
+\item 
+int \hyperlink{classLevel_a321e86205d65be219d52200e62ffde55}{get\-Update\-Wait} () const 
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implement levels and switching to next one. 
+
+This class stores the information of the currently running level. It also stores a counter of how many blocks are present in the level and emits a level cleared event when all blocks are destroyed. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLevel_a1ad0ac0368b30dd5389761c44e6b42db}{\index{Level@{Level}!Level@{Level}}
+\index{Level@{Level}!Level@{Level}}
+\subsubsection[{Level}]{\setlength{\rightskip}{0pt plus 5cm}Level\-::\-Level (
+\begin{DoxyParamCaption}
+\item[{{\bf Level\-Config\-Item} const $\ast$}]{config}
+\end{DoxyParamCaption}
+)}}\label{classLevel_a1ad0ac0368b30dd5389761c44e6b42db}
+Create the level from the config item. \hypertarget{classLevel_a249eac1e8f19ff44134efa5e986feaca}{\index{Level@{Level}!$\sim$\-Level@{$\sim$\-Level}}
+\index{$\sim$\-Level@{$\sim$\-Level}!Level@{Level}}
+\subsubsection[{$\sim$\-Level}]{\setlength{\rightskip}{0pt plus 5cm}Level\-::$\sim$\-Level (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLevel_a249eac1e8f19ff44134efa5e986feaca}
+Remove me from the chain of responsibilitiy. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLevel_ac06e7d9fa248ce159a4489b9db2e9a72}{\index{Level@{Level}!get\-Level\-Num@{get\-Level\-Num}}
+\index{get\-Level\-Num@{get\-Level\-Num}!Level@{Level}}
+\subsubsection[{get\-Level\-Num}]{\setlength{\rightskip}{0pt plus 5cm}int Level\-::get\-Level\-Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevel_ac06e7d9fa248ce159a4489b9db2e9a72}
+Get the number of this level. \hypertarget{classLevel_a321e86205d65be219d52200e62ffde55}{\index{Level@{Level}!get\-Update\-Wait@{get\-Update\-Wait}}
+\index{get\-Update\-Wait@{get\-Update\-Wait}!Level@{Level}}
+\subsubsection[{get\-Update\-Wait}]{\setlength{\rightskip}{0pt plus 5cm}int Level\-::get\-Update\-Wait (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevel_a321e86205d65be219d52200e62ffde55}
+Get the number of msec to wait between updates. \hypertarget{classLevel_a01a06c7956b2090df3efb6c2834a8ee0}{\index{Level@{Level}!handle\-Event@{handle\-Event}}
+\index{handle\-Event@{handle\-Event}!Level@{Level}}
+\subsubsection[{handle\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Level\-::handle\-Event (
+\begin{DoxyParamCaption}
+\item[{{\bf Event} $\ast$}]{ev}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classLevel_a01a06c7956b2090df3efb6c2834a8ee0}
+Handle events of block deleted. 
+
+Reimplemented from \hyperlink{classAbstractResponsibility_a14d885884ae4841dbe7c5824b986f2c9}{Abstract\-Responsibility}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+level.\-h\item 
+level.\-cpp\end{DoxyCompactItemize}

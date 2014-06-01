@@ -1,0 +1,86 @@
+\hypertarget{classChainOfResponsibility}{\section{Chain\-Of\-Responsibility Class Reference}
+\label{classChainOfResponsibility}\index{Chain\-Of\-Responsibility@{Chain\-Of\-Responsibility}}
+}
+
+
+Traverse chain of responsibility and manage it.  
+
+
+
+
+{\ttfamily \#include $<$chainofresponsibility.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classChainOfResponsibility_a59e7c6850bbbef64d53043fc78ac8b8b}{add} (\hyperlink{classAbstractResponsibility}{Abstract\-Responsibility} $\ast$)
+\item 
+void \hyperlink{classChainOfResponsibility_ab452d547a94bb23a0417f81850ca0601}{remove} (\hyperlink{classAbstractResponsibility}{Abstract\-Responsibility} $\ast$)
+\item 
+void \hyperlink{classChainOfResponsibility_a068f5080af0681aadf0d1a9292b21988}{handle\-Event} (\hyperlink{classEvent}{Event} $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classChainOfResponsibility}{Chain\-Of\-Responsibility} \& \hyperlink{classChainOfResponsibility_aeefa4eddd729640133be4c7bcc1a99c8}{get} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classChainOfResponsibility_acb45d69622de806430f898d5a27145dc}{reset} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classChainOfResponsibility_ab9aaba231fd11196425e75caf709bfc6}{class {\bfseries Test\-Suite}}\label{classChainOfResponsibility_ab9aaba231fd11196425e75caf709bfc6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Traverse chain of responsibility and manage it. 
+
+The central place of the only chain of responsibility in this programm. This class is implemented as Singleton (p. 127 Go\-F-\/book). Adding and removing of participants of the chain of responsibility as well as pushing an event into the chain is simplified by this class. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classChainOfResponsibility_a59e7c6850bbbef64d53043fc78ac8b8b}{\index{Chain\-Of\-Responsibility@{Chain\-Of\-Responsibility}!add@{add}}
+\index{add@{add}!ChainOfResponsibility@{Chain\-Of\-Responsibility}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}void Chain\-Of\-Responsibility\-::add (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\-Responsibility} $\ast$}]{n}
+\end{DoxyParamCaption}
+)}}\label{classChainOfResponsibility_a59e7c6850bbbef64d53043fc78ac8b8b}
+Add a member to the chain. \hypertarget{classChainOfResponsibility_aeefa4eddd729640133be4c7bcc1a99c8}{\index{Chain\-Of\-Responsibility@{Chain\-Of\-Responsibility}!get@{get}}
+\index{get@{get}!ChainOfResponsibility@{Chain\-Of\-Responsibility}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Chain\-Of\-Responsibility} \& Chain\-Of\-Responsibility\-::get (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classChainOfResponsibility_aeefa4eddd729640133be4c7bcc1a99c8}
+Get the only instance of the chain of responbility. \hypertarget{classChainOfResponsibility_a068f5080af0681aadf0d1a9292b21988}{\index{Chain\-Of\-Responsibility@{Chain\-Of\-Responsibility}!handle\-Event@{handle\-Event}}
+\index{handle\-Event@{handle\-Event}!ChainOfResponsibility@{Chain\-Of\-Responsibility}}
+\subsubsection[{handle\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Chain\-Of\-Responsibility\-::handle\-Event (
+\begin{DoxyParamCaption}
+\item[{{\bf Event} $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{classChainOfResponsibility_a068f5080af0681aadf0d1a9292b21988}
+Propagate an event through the chain of responsibility. \hypertarget{classChainOfResponsibility_ab452d547a94bb23a0417f81850ca0601}{\index{Chain\-Of\-Responsibility@{Chain\-Of\-Responsibility}!remove@{remove}}
+\index{remove@{remove}!ChainOfResponsibility@{Chain\-Of\-Responsibility}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}void Chain\-Of\-Responsibility\-::remove (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\-Responsibility} $\ast$}]{item}
+\end{DoxyParamCaption}
+)}}\label{classChainOfResponsibility_ab452d547a94bb23a0417f81850ca0601}
+Remove the member given. \hypertarget{classChainOfResponsibility_acb45d69622de806430f898d5a27145dc}{\index{Chain\-Of\-Responsibility@{Chain\-Of\-Responsibility}!reset@{reset}}
+\index{reset@{reset}!ChainOfResponsibility@{Chain\-Of\-Responsibility}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void Chain\-Of\-Responsibility\-::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classChainOfResponsibility_acb45d69622de806430f898d5a27145dc}
+Needed for testing only. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+chainofresponsibility.\-h\item 
+chainofresponsibility.\-cpp\end{DoxyCompactItemize}

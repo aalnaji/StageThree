@@ -3,6 +3,8 @@
 #include <QPainter>
 #include <QGraphicsScene>
 #include "score.h"
+#include "chainofresponsibility.h"
+#include "Events.h"
 
 Block::Block(BlockConfigItem * config)
     : QGraphicsRectItem(config->getRect())
@@ -46,6 +48,8 @@ void Block::advance(int phase)
         scene()->removeItem(this);
 		/* Killing the block adds 10 points. */
 		Score::get().add(10);
+		BlockDeletedEvent bde;
+		ChainOfResponsibility::get().handleEvent(&bde);
         delete this;
 		return;
     }

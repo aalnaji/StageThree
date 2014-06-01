@@ -1,0 +1,76 @@
+\hypertarget{classPaddle}{\section{Paddle Class Reference}
+\label{classPaddle}\index{Paddle@{Paddle}}
+}
+
+
+Implement the paddle a the bottom of the screen.  
+
+
+
+
+{\ttfamily \#include $<$paddle.\-h$>$}
+
+Inheritance diagram for Paddle\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPaddle}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPaddle_ad796bdd2f07b024b1c518439149a2866}{Paddle} (\hyperlink{classPaddleConfigItem}{Paddle\-Config\-Item} $\ast$)
+\item 
+void \hyperlink{classPaddle_aef40328563790e25a73ee4c6b58fa390}{handle\-Event} (\hyperlink{classEvent}{Event} $\ast$event)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Q\-Variant \hyperlink{classPaddle_ad2fa885cc0f5fdabb53429b19569a997}{item\-Change} (Graphics\-Item\-Change change, const Q\-Variant \&value)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implement the paddle a the bottom of the screen. 
+
+The paddle is used to let the ball bounce of. Furthermore does it store the number of its lives and is also responsible for displaying them. The paddle observes the chain of responsibility to look for Ball\-Lost\-Events, certain key stroke events and may trigger the Out\-Of\-Lives event, when all lives are void. When a Out\-Of\-Lives event is seen, but lives are still present, then the game ends because all blocks have been destroyed and no more levels are present. The paddle then adds 100 points for every live left. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPaddle_ad796bdd2f07b024b1c518439149a2866}{\index{Paddle@{Paddle}!Paddle@{Paddle}}
+\index{Paddle@{Paddle}!Paddle@{Paddle}}
+\subsubsection[{Paddle}]{\setlength{\rightskip}{0pt plus 5cm}Paddle\-::\-Paddle (
+\begin{DoxyParamCaption}
+\item[{{\bf Paddle\-Config\-Item} $\ast$}]{config}
+\end{DoxyParamCaption}
+)}}\label{classPaddle_ad796bdd2f07b024b1c518439149a2866}
+Create a new paddle to let the ball bounce of. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classPaddle_aef40328563790e25a73ee4c6b58fa390}{\index{Paddle@{Paddle}!handle\-Event@{handle\-Event}}
+\index{handle\-Event@{handle\-Event}!Paddle@{Paddle}}
+\subsubsection[{handle\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Paddle\-::handle\-Event (
+\begin{DoxyParamCaption}
+\item[{{\bf Event} $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPaddle_aef40328563790e25a73ee4c6b58fa390}
+Implement handling of K and L keys here. K moves the paddle left and L right. 
+
+Reimplemented from \hyperlink{classAbstractResponsibility_a14d885884ae4841dbe7c5824b986f2c9}{Abstract\-Responsibility}.
+
+\hypertarget{classPaddle_ad2fa885cc0f5fdabb53429b19569a997}{\index{Paddle@{Paddle}!item\-Change@{item\-Change}}
+\index{item\-Change@{item\-Change}!Paddle@{Paddle}}
+\subsubsection[{item\-Change}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Variant Paddle\-::item\-Change (
+\begin{DoxyParamCaption}
+\item[{Graphics\-Item\-Change}]{change, }
+\item[{const Q\-Variant \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classPaddle_ad2fa885cc0f5fdabb53429b19569a997}
+When the item is added to the scene then a Item\-Scene\-Changed notify is send. On such an event add the lives\-Display to the scene.
+
+When the item is added to the scene then a Item\-Scene\-Changed notify is send. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+paddle.\-h\item 
+paddle.\-cpp\end{DoxyCompactItemize}

@@ -6,8 +6,8 @@
 
 PaddleConfigItem::PaddleConfigItem()
 	: ConfigItem()
-    , theRectangle(Defaults::PADDLE_X_COORDINATE, Defaults::PADDLE_Y_COORDINATE
-			, Defaults::PADDLE_WIDTH, Defaults::PADDLE_HEIGHT)
+	, coordinates(Defaults::PADDLE_X_COORDINATE, Defaults::PADDLE_Y_COORDINATE)
+    , theRectangle(0,0, Defaults::PADDLE_WIDTH, Defaults::PADDLE_HEIGHT)
     , color(Defaults::PADDLE_COLOR)
 	, lives(Defaults::PADDLE_LIVES)
 {
@@ -17,9 +17,10 @@ bool PaddleConfigItem::validate(int height, int width) const
 {
     // Check if in the bounds of the scene.
     QRect wind(0, 0, width, height);
-
+	QRect pad(theRectangle);
+	pad.moveTo(coordinates);
     // Checks if the block is entirely within the window.
-    return wind.contains(theRectangle, true);
+    return wind.contains(pad, true);
 }
 
 Item PaddleConfigItem::getItemType() const
@@ -50,22 +51,22 @@ void PaddleConfigItem::addParameter(std::string name, double value)
 
 int PaddleConfigItem::getXCoordinate() const
 {
-    return theRectangle.x();
+    return coordinates.x();
 }
 
 void PaddleConfigItem::setXCoordinate(int xCoordinate)
 {
-    theRectangle.setX(xCoordinate);
+    coordinates.setX(xCoordinate);
 }
 
 int PaddleConfigItem::getYCoordinate() const
 {
-    return theRectangle.y();
+    return coordinates.y();
 }
 
 void PaddleConfigItem::setYCoordinate(int yCoordinate)
 {
-    theRectangle.setY(yCoordinate);
+    coordinates.setY(yCoordinate);
 }
 
 float PaddleConfigItem::getWidth() const

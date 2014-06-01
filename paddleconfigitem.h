@@ -8,7 +8,8 @@
 
 /** Store the configuration options for a paddle.
  * This class essentially is a copy from the BlockConfigItem
- * with some internal changes. */
+ * with some internal changes.
+ * @brief Store and propagate the paddle's configuration. */
 class PaddleConfigItem : public ConfigItem
 {
 public:
@@ -19,33 +20,40 @@ public:
 	/** Identify us as a paddle. */
     Item getItemType() const;
 	/** For easy creation of a graphics item, create a rect here. */
-	QRect const getRect() const { return QRect(0, 0, theRectangle.width(), theRectangle.height()); };
+	QRect const getRect() const { return theRectangle; };
 	/** Give the initial position of this paddle. */
-	QPointF const getPos() const { return theRectangle.topLeft(); };
+	QPoint const getPos() const { return coordinates; };
 	/** In the configuration file after a PADDLE section a parameter was found.
 	 * Check if it is suitable for the paddle. */
     void addParameter(std::string name, double value);
-	/** Getters and setters. */
+	/** Get the x coordinate. */
     int getXCoordinate() const;
+	/** Set the x coordinate. */
     void setXCoordinate(int);
-
+	/** Get the y coordinate. */
     int getYCoordinate() const;
+	/** Set the y coordinate. */
     void setYCoordinate(int);
-
+	/** Get the width of the paddle. */
     float getWidth() const;
+	/** Set the width of the paddle. */
     void setWidth(float);
-
+	/** Get the height of the paddle. */
     float getHeight() const;
+	/** Set the height of the paddle. */
     void setHeight(float);
-
+	/** Get the color of the paddle. */
     QColor getColor() const;
+	/** Set the color hue of the paddle. */
 	void setHue(float);
-
-	/** Get and set the initial number of lives of this paddle. */
+	/** Get the initial number of lives of this paddle. */
 	unsigned int getLives() const;
+	/** Set the initial number of lives of this paddle. */
 	void setLives(unsigned int lives);
 private:
-	/** The paddle position and its width/height in one structure. */
+	/** The paddle position. */
+	QPoint coordinates;
+	/** The paddle width and height. */
     QRect theRectangle;
 	/** The color of the paddle. */
     QColor color;
