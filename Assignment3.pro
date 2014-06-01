@@ -55,7 +55,8 @@ FORMS    += dialog.ui \
     helpdialog.ui
 
 OTHER_FILES += config.config \
-    README.md
+    README.md \
+    breakoutscore
 
 
 
