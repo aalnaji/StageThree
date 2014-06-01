@@ -8,8 +8,8 @@ namespace Defaults
 {
 
 //change this path depending on the location of your config file
-const std::string CONFIG_PATH ="config.config";
-const QString HIGHSCORE_PATH = "breakoutscore";
+const std::string CONFIG_PATH ="//Users//Alnaji//Documents//info3220//A3//v3//Assignment3//config.config";
+const QString HIGHSCORE_PATH = "//Users//Alnaji//Documents//info3220//A3//v3//Assignment3//breakoutscore";
 
 // Set a default font and color for texts displayed in the game window
 const QFont DEFAULT_FONT("sans", 15, 2);
@@ -46,7 +46,7 @@ const unsigned int PADDLE_LIVES = 3;
 
 // LEVEL_DEFAULTS
 const int LEVEL_NUM = 1;
-const int LEVEL_UPDATE_WAIT = 1000;
+const int LEVEL_BALL_VELOCITY_FACTOR = 1.0;
 }
 
 

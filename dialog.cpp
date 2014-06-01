@@ -1,3 +1,5 @@
+#include <QGraphicsItem>
+
 #include "dialog.h"
 #include "ui_dialog.h"
 #include "blockconfigitem.h"
@@ -155,9 +157,16 @@ void Dialog::handleEvent(Event *event)
 		/* The score board manager also depends on the event, therefore propagate it. */
 		AbstractResponsibility::handleEvent(event);
 	} else if (dynamic_cast<LevelClearedEvent *>(event)) {
-		if(addLevel(config, level->getLevelNum()+ 1))
-			startTimer();
-		else {
+		if(addLevel(config, level->getLevelNum()+ 1)) {
+			Ball *currBall;
+			for(QList<QGraphicsItem *>::iterator iter(scene->items().begin()), iterEnd(scene->items().end());
+					iter!= iterEnd; ++iter){
+				/* Find all balls and update their velocity. */
+				if((currBall= dynamic_cast<Ball *>(*iter))) {
+					currBall->setVelocity(currBall->getVelocity()* level->getBallVelocityFactor());
+				}
+			}
+		} else {
 			stopTimer();
 			gameOver= true;
 			QGraphicsSimpleTextItem *goText(new QGraphicsSimpleTextItem(QString("Game over !!!")));
@@ -180,7 +189,7 @@ void Dialog::handleEvent(Event *event)
 void Dialog::startTimer()
 {
 	if(!gameOver)
-		timer.start(level->getUpdateWait() / 120);
+		timer.start(1000/ 120);
 }
 
 /** Stop the timer. */

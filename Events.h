@@ -5,7 +5,7 @@
 class Event {
 public:
 	/** Ensure the class polymorphic, so that dynamic_cast is possible. */
-	virtual ~Event() {};
+    virtual ~Event() {}
 };
 
 /** @brief Transport key stroke events. */

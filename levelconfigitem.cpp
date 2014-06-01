@@ -6,7 +6,7 @@
 /** Set default values. */
 LevelConfigItem::LevelConfigItem()
 	: levelNum(Defaults::LEVEL_NUM)
-	, updateWait(Defaults::LEVEL_UPDATE_WAIT)
+	, ballVelFactor(Defaults::LEVEL_BALL_VELOCITY_FACTOR)
 {
 }
 
@@ -42,8 +42,8 @@ void LevelConfigItem::addParameter(std::string name, double value)
 {
 	if (name == "level") {
         setLevelNum(value);
-    } else if (name == "ballSpeed") {
-        setUpdateDelay(value);
+    } else if (name == "ballVelocityFactor") {
+        setBallVelocityFactor(value);
     } else {
         // Unrecognised parameter.
         std::cout << "Unrecognised parameter when creating a level: " + name << std::endl;

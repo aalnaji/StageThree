@@ -22,13 +22,13 @@ public:
 	void handleEvent(Event *);
 	/** Get the number of this level. */
 	inline int getLevelNum() const { return num; }
-	/** Get the number of msec to wait between updates. */
-	inline int getUpdateWait() const { return waitUpdate; };
+	/** Get the factor the ball is speed up in this level. */
+	inline int getBallVelocityFactor() const { return ballVelocityFactor; };
 private:
 	/** The number of blocks in the level. */
 	int numBlock;
-	/** The time to wait between updates. */
-	int waitUpdate;
+	/** The ball speed up factor. */
+	int ballVelocityFactor;
 	/** The number of the level. */
 	int num;
 };

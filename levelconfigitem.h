@@ -31,10 +31,10 @@ public:
 	inline void setLevelNum(int const nLevelNum) { levelNum= nLevelNum; };
 	/** Get the number of this level. */
 	inline int getLevelNum() const { return levelNum; };
-	/** Set the update delay for this level. */
-	inline void setUpdateDelay(const int nUpdateWait) { updateWait= nUpdateWait; };
-	/** Get the update delay for this level. */
-	inline int getUpdateDelay() const { return updateWait; };
+	/** Set the factor the ball's velocity gets multiplied with in this level. */
+	inline void setBallVelocityFactor(const int nballVellFactor) { ballVelFactor= nballVellFactor; };
+	/** Get the factor the ball's velocity gets multiplied with in this level. */
+	inline int getBallVelocityFactor() const { return ballVelFactor; };
 	/** Get the i-th item. */
 	inline ConfigItem *operator[] (int i) { return configItems[i]; };
 	/** Return the number of elements in this level. */
@@ -45,7 +45,7 @@ private:
 	/** The number of this level. */
 	int levelNum;
 	/** The speed of the ball in this level, by giving the update delay. */
-	int updateWait;
+	int ballVelFactor;
 };
 
 #endif // LEVELCONFIGITEM_H

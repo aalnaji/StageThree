@@ -60,9 +60,6 @@ void ScoreBoardManager::handleEvent(Event *key)
 			scoreBoard.highScoreTable->setItem(i, SCORECOLUMN, new QTableWidgetItem(QString("%1").arg(newScore)));
 			scoreBoard.highScoreTable->setItem(i, NAMECOLUMN, new QTableWidgetItem(QString("Enter your name")));
 			changed= true;
-		}
-		window.open();
-		if(changed) {
 			/* Start the editor for that item. */
 			scoreBoard.highScoreTable->editItem(scoreBoard.highScoreTable->item(i, NAMECOLUMN));
 		}

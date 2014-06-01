@@ -24,7 +24,7 @@ public:
 
     QPointF getCenter() const;
     int getRadius() const;
-    QVector2D getVelocity() const;
+	inline QVector2D getVelocity() const { return velocity; };
     void setVelocity(const QVector2D &newVelocity);
 
 private:

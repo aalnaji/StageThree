@@ -6,7 +6,7 @@
 /** Create the level from the config item. */
 Level::Level(const LevelConfigItem *config)
 	: numBlock(config->size())
-	, waitUpdate(config->getUpdateDelay())
+	, ballVelocityFactor(config->getBallVelocityFactor())
 	, num(config->getLevelNum())
 {
 	ChainOfResponsibility::get().add(this);
